@@ -1,0 +1,74 @@
+{
+    "name": "XRInputActions",
+    "maps": [
+        {
+            "name": "XRActions",
+            "id": "44c3132b-8216-401f-b7ed-9ac643591c20",
+            "actions": [
+                {
+                    "name": "DrawAction",
+                    "type": "Button",
+                    "id": "ac371ceb-f3ed-4ca4-8be5-9fd168905563",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchColor",
+                    "type": "Button",
+                    "id": "4c03ef92-2483-45de-b9dc-eb40f1970017",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Undo",
+                    "type": "Button",
+                    "id": "8291c67c-a26c-4977-bd47-96c65236fc81",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "413ed99f-fce5-486f-8725-16f0107f658f",
+                    "path": "<XRController>{RightHand}/triggerButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DrawAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9063a44-ecae-4ab2-9df7-160c689b58f6",
+                    "path": "<XRController>{LeftHand}/triggerButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchColor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4b156782-1b4c-49f4-82ad-1f01a94b32f0",
+                    "path": "<XRController>{LeftHand}/menu",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Undo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
