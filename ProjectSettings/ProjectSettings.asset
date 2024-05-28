@@ -812,7 +812,12 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
+    Build: 1
+    Game Performance: 0
+    Purchasing: 0
+    UDP: 0
     UNet: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -827,11 +832,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 8b732e96-0c9e-41df-a64b-ff2372fcc817
+  cloudProjectId: 9714fddc-5dad-4e54-aa59-de239256ae7f
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: test_new_brush
-  organizationId: bravola
+  organizationId: hyi_unity
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

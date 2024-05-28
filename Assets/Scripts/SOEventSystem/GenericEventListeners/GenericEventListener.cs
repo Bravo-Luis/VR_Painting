@@ -41,5 +41,6 @@ public class BoolEventListener : GenericEventListener<bool> { }
 public class IntEventListener : GenericEventListener<int> { }
 public class FloatEventListener : GenericEventListener<float> { }
 public class Vector3EventListener : GenericEventListener<Vector3> { }
+public class Vector4EventListener : GenericEventListener<Vector4> { }
 public class TransformEventListener : GenericEventListener<Transform> { }
 public class ScriptableObjectEventListener : GenericEventListener<ScriptableObject> { }
