@@ -334,8 +334,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9c844df65cd1c32438a24c7292753978, type: 2}
+  m_sharedMaterial: {fileID: -8984794696702196130, guid: 9c844df65cd1c32438a24c7292753978, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -811,6 +811,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5893533802981812062}
     m_Modifications:
+    - target: {fileID: 4549692178574016461, guid: e6dd8571a4b92b940b824aaa9941c63f, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.03705725
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549692178574016461, guid: e6dd8571a4b92b940b824aaa9941c63f, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.0048309774
+      objectReference: {fileID: 0}
+    - target: {fileID: 6009979815553841214, guid: e6dd8571a4b92b940b824aaa9941c63f, type: 3}
+      propertyPath: m_UseForceGrab
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6009979815553841214, guid: e6dd8571a4b92b940b824aaa9941c63f, type: 3}
+      propertyPath: m_AllowAnchorControl
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8034530297317963602, guid: e6dd8571a4b92b940b824aaa9941c63f, type: 3}
       propertyPath: m_Name
       value: RaycastSelector Controller Left
@@ -873,6 +889,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5893533802981812062}
     m_Modifications:
+    - target: {fileID: 1368236297534309371, guid: ca47b318a51c1974080b95c18b7ce6fb, type: 3}
+      propertyPath: m_Name
+      value: AccuracyFeedbackText
+      objectReference: {fileID: 0}
     - target: {fileID: 3608940769867690709, guid: ca47b318a51c1974080b95c18b7ce6fb, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.0632
@@ -884,6 +904,14 @@ PrefabInstance:
     - target: {fileID: 7522661224380368348, guid: ca47b318a51c1974080b95c18b7ce6fb, type: 3}
       propertyPath: m_Name
       value: Handle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204176566698586474, guid: ca47b318a51c1974080b95c18b7ce6fb, type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204176566698586474, guid: ca47b318a51c1974080b95c18b7ce6fb, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8529557310912695688, guid: ca47b318a51c1974080b95c18b7ce6fb, type: 3}
       propertyPath: m_RootOrder
