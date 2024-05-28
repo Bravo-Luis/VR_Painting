@@ -7,7 +7,7 @@ public abstract class GenericEventRaiser<T> : MonoBehaviour
 
     protected virtual void TriggerEvent(T param)
     {
-        Debug.Log($"event \"{eventChannel.description}\" with param {param} is triggered.");
+        Debug.Log($"param {param} is broadcasted through \"{eventChannel.description}\"");
         eventChannel.RaiseEvent(param);
     }
 

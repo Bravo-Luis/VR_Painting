@@ -980,7 +980,7 @@ GameObject:
   - component: {fileID: 8529557310912695694}
   - component: {fileID: 8529557310912695689}
   m_Layer: 0
-  m_Name: Brush Controller
+  m_Name: Brush Controller Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

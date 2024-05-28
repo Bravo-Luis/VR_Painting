@@ -6,7 +6,7 @@ public class VoidEventRaiser : MonoBehaviour
 
     protected virtual void TriggerEvent()
     {
-        Debug.Log($"void event  \"{eventChannel.description}\" is triggered.");
+        Debug.Log($"void \"{eventChannel.description}\" broadcasted.");
         eventChannel.RaiseEvent();
     }
 }
