@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5703652879540175025}
   - component: {fileID: 5703652879540175030}
   m_Layer: 5
-  m_Name: TMP3dGameObject
+  m_Name: 3DObjectText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
