@@ -159,6 +159,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.DefaultCompany.test_new_brush
     Standalone: com.DefaultCompany.test-new-brush
   buildNumber:
     Standalone: 0
