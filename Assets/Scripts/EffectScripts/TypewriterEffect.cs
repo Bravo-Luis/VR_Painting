@@ -2,10 +2,10 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 
-[RequireComponent(typeof(TextMeshPro))]
+[RequireComponent(typeof(TMP_Text))]
 public class TypewriterEffect : VoidEventListener
 {
-    private TextMeshPro textComponent;
+    private TMP_Text textComponent;
     public float typingSpeed = 0.05f;
     public string fullText;
     public bool playOnAwake;
@@ -13,7 +13,7 @@ public class TypewriterEffect : VoidEventListener
 
     private void Awake()
     {
-        textComponent = GetComponent<TextMeshPro>();
+        textComponent = GetComponent<TMP_Text>();
         textComponent.text = "";
         if (playOnAwake) StartCoroutine(TypeText());
     }

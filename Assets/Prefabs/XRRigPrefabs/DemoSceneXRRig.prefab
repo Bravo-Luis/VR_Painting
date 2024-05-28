@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 1774483913}
   - component: {fileID: 1774483912}
   m_Layer: 0
-  m_Name: GrabMoveRotateRig
+  m_Name: DemoSceneXRRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -618,7 +618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRendererPrefab: {fileID: 4339548887346288529, guid: 0f4901cb0f792a54cb837ddf6657b05e, type: 3}
   brushWidth: 0.02
-  rightHand: {fileID: 0}
+  rightHand: {fileID: 8060348278888719919}
   minBrushWidth: 0.01
   maxBrushWidth: 0.1
 --- !u!114 &5893533803653297637
@@ -713,7 +713,7 @@ MonoBehaviour:
   m_EnableFreeZMovement: 1
   m_UseGravity: 0
   m_GravityApplicationMode: 0
-  m_ControllerTransform: {fileID: 0}
+  m_ControllerTransform: {fileID: 693053308641954921}
   m_EnableMoveWhileSelecting: 0
   m_MoveFactor: 1
   m_GrabMoveAction:
@@ -877,6 +877,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.0632
       objectReference: {fileID: 0}
+    - target: {fileID: 6467776194394091695, guid: ca47b318a51c1974080b95c18b7ce6fb, type: 3}
+      propertyPath: m_Name
+      value: Brush
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522661224380368348, guid: ca47b318a51c1974080b95c18b7ce6fb, type: 3}
+      propertyPath: m_Name
+      value: Handle
+      objectReference: {fileID: 0}
     - target: {fileID: 8529557310912695688, guid: ca47b318a51c1974080b95c18b7ce6fb, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -930,5 +938,10 @@ PrefabInstance:
 --- !u!4 &693053308641954921 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8529557310912695688, guid: ca47b318a51c1974080b95c18b7ce6fb, type: 3}
+  m_PrefabInstance: {fileID: 9205686809878249953}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8060348278888719919 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1161145219708430286, guid: ca47b318a51c1974080b95c18b7ce6fb, type: 3}
   m_PrefabInstance: {fileID: 9205686809878249953}
   m_PrefabAsset: {fileID: 0}
