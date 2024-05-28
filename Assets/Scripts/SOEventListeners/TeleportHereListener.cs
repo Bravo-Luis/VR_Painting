@@ -4,11 +4,13 @@ using UnityEngine;
 public class TeleportHereListener : TransformEventListener
 {
     public Vector3 dropOffset = Vector3.zero;
+    [SerializeField] int counter = 0;
 
     protected override void HandleEvent(Transform param)
     {
         base.HandleEvent(param);
         StartCoroutine(Teleport(param));
+        counter++;
     }
 
     IEnumerator Teleport(Transform t)

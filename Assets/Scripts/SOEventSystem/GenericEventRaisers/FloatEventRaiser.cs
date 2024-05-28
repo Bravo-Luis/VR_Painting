@@ -1,1 +1,1 @@
-﻿public class FLoatEventRaiser : GenericEventRaiser<float> { }
+﻿public class FloatEventRaiser : GenericEventRaiser<float> { }
