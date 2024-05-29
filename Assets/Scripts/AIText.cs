@@ -7,7 +7,7 @@ using TMPro;
 public class AIText : MonoBehaviour
 {
 
-    public TMPro.TextMeshProUGUI instructionText;
+    public TMPro.TextMeshPro instructionText;
 
     public int index = 0;
 

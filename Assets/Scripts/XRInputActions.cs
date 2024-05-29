@@ -71,6 +71,24 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Next"",
+                    ""type"": ""Button"",
+                    ""id"": ""efe5fb33-71ba-4bac-9dbe-ee2d70aaff4f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""160e9ecb-0301-4c01-9e9f-cc81aadf1701"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -128,6 +146,28 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""ToggleUI"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cdaf1a14-846a-4536-a0ef-312833054e87"",
+                    ""path"": ""<XRController>{RightHand}/{PrimaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86f8b64a-e56f-4416-93e2-873b8a9ba35e"",
+                    ""path"": ""<XRController>{RightHand}/{SecondaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -141,6 +181,8 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
         m_XRActions_Undo = m_XRActions.FindAction("Undo", throwIfNotFound: true);
         m_XRActions_BrushSize = m_XRActions.FindAction("BrushSize", throwIfNotFound: true);
         m_XRActions_ToggleUI = m_XRActions.FindAction("ToggleUI", throwIfNotFound: true);
+        m_XRActions_Next = m_XRActions.FindAction("Next", throwIfNotFound: true);
+        m_XRActions_Back = m_XRActions.FindAction("Back", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -207,6 +249,8 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_XRActions_Undo;
     private readonly InputAction m_XRActions_BrushSize;
     private readonly InputAction m_XRActions_ToggleUI;
+    private readonly InputAction m_XRActions_Next;
+    private readonly InputAction m_XRActions_Back;
     public struct XRActionsActions
     {
         private @XRInputActions m_Wrapper;
@@ -216,6 +260,8 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
         public InputAction @Undo => m_Wrapper.m_XRActions_Undo;
         public InputAction @BrushSize => m_Wrapper.m_XRActions_BrushSize;
         public InputAction @ToggleUI => m_Wrapper.m_XRActions_ToggleUI;
+        public InputAction @Next => m_Wrapper.m_XRActions_Next;
+        public InputAction @Back => m_Wrapper.m_XRActions_Back;
         public InputActionMap Get() { return m_Wrapper.m_XRActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -240,6 +286,12 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
             @ToggleUI.started += instance.OnToggleUI;
             @ToggleUI.performed += instance.OnToggleUI;
             @ToggleUI.canceled += instance.OnToggleUI;
+            @Next.started += instance.OnNext;
+            @Next.performed += instance.OnNext;
+            @Next.canceled += instance.OnNext;
+            @Back.started += instance.OnBack;
+            @Back.performed += instance.OnBack;
+            @Back.canceled += instance.OnBack;
         }
 
         private void UnregisterCallbacks(IXRActionsActions instance)
@@ -259,6 +311,12 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
             @ToggleUI.started -= instance.OnToggleUI;
             @ToggleUI.performed -= instance.OnToggleUI;
             @ToggleUI.canceled -= instance.OnToggleUI;
+            @Next.started -= instance.OnNext;
+            @Next.performed -= instance.OnNext;
+            @Next.canceled -= instance.OnNext;
+            @Back.started -= instance.OnBack;
+            @Back.performed -= instance.OnBack;
+            @Back.canceled -= instance.OnBack;
         }
 
         public void RemoveCallbacks(IXRActionsActions instance)
@@ -283,5 +341,7 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
         void OnUndo(InputAction.CallbackContext context);
         void OnBrushSize(InputAction.CallbackContext context);
         void OnToggleUI(InputAction.CallbackContext context);
+        void OnNext(InputAction.CallbackContext context);
+        void OnBack(InputAction.CallbackContext context);
     }
 }
