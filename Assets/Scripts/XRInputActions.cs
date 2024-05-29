@@ -62,6 +62,15 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ToggleUI"",
+                    ""type"": ""Button"",
+                    ""id"": ""dcba1a8d-63cc-442c-b139-7504f9b3c715"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -108,6 +117,17 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""BrushSize"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58d6eef1-5d27-47b3-b1f7-3603aa03bedc"",
+                    ""path"": ""<XRController>{RightHand}/menuButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -120,6 +140,7 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
         m_XRActions_SwitchColor = m_XRActions.FindAction("SwitchColor", throwIfNotFound: true);
         m_XRActions_Undo = m_XRActions.FindAction("Undo", throwIfNotFound: true);
         m_XRActions_BrushSize = m_XRActions.FindAction("BrushSize", throwIfNotFound: true);
+        m_XRActions_ToggleUI = m_XRActions.FindAction("ToggleUI", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -185,6 +206,7 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_XRActions_SwitchColor;
     private readonly InputAction m_XRActions_Undo;
     private readonly InputAction m_XRActions_BrushSize;
+    private readonly InputAction m_XRActions_ToggleUI;
     public struct XRActionsActions
     {
         private @XRInputActions m_Wrapper;
@@ -193,6 +215,7 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
         public InputAction @SwitchColor => m_Wrapper.m_XRActions_SwitchColor;
         public InputAction @Undo => m_Wrapper.m_XRActions_Undo;
         public InputAction @BrushSize => m_Wrapper.m_XRActions_BrushSize;
+        public InputAction @ToggleUI => m_Wrapper.m_XRActions_ToggleUI;
         public InputActionMap Get() { return m_Wrapper.m_XRActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -214,6 +237,9 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
             @BrushSize.started += instance.OnBrushSize;
             @BrushSize.performed += instance.OnBrushSize;
             @BrushSize.canceled += instance.OnBrushSize;
+            @ToggleUI.started += instance.OnToggleUI;
+            @ToggleUI.performed += instance.OnToggleUI;
+            @ToggleUI.canceled += instance.OnToggleUI;
         }
 
         private void UnregisterCallbacks(IXRActionsActions instance)
@@ -230,6 +256,9 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
             @BrushSize.started -= instance.OnBrushSize;
             @BrushSize.performed -= instance.OnBrushSize;
             @BrushSize.canceled -= instance.OnBrushSize;
+            @ToggleUI.started -= instance.OnToggleUI;
+            @ToggleUI.performed -= instance.OnToggleUI;
+            @ToggleUI.canceled -= instance.OnToggleUI;
         }
 
         public void RemoveCallbacks(IXRActionsActions instance)
@@ -253,5 +282,6 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
         void OnSwitchColor(InputAction.CallbackContext context);
         void OnUndo(InputAction.CallbackContext context);
         void OnBrushSize(InputAction.CallbackContext context);
+        void OnToggleUI(InputAction.CallbackContext context);
     }
 }

@@ -21,6 +21,7 @@ public class DrawingController : MonoBehaviour
     
     private List<Color> colorPalette = new List<Color> { Color.red, Color.green, Color.blue, Color.yellow, Color.magenta, Color.black , new Color(0.65f, 0.16f, 0.16f), new Color(1f, 0.65f, 0f), Color.white };
     private int currentColorIndex = 0;
+    public GameObject[] textElements;
 
     void Awake()
     {
@@ -32,6 +33,7 @@ public class DrawingController : MonoBehaviour
         inputActions.Enable();
         inputActions.XRActions.SwitchColor.performed += OnSwitchColor;
         inputActions.XRActions.Undo.performed += OnUndo; 
+        inputActions.XRActions.ToggleUI.performed += OnToggleUI;
     }
 
     void OnDisable()
@@ -39,6 +41,7 @@ public class DrawingController : MonoBehaviour
         inputActions.Disable();
         inputActions.XRActions.SwitchColor.performed -= OnSwitchColor;
         inputActions.XRActions.Undo.performed -= OnUndo; 
+        inputActions.XRActions.ToggleUI.performed -= OnToggleUI;
     }
 
     void Update()
@@ -158,5 +161,13 @@ public class DrawingController : MonoBehaviour
             Destroy(lastLineRenderer);
             Debug.Log("Undo last action");
         }
+    }
+    private void OnToggleUI(InputAction.CallbackContext context)
+    {
+        foreach (GameObject textElement in textElements)
+        {
+            textElement.SetActive(!textElement.activeSelf);
+        }
+        Debug.Log("Toggled UI");
     }
 }
