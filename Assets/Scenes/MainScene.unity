@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.5219834, g: 0.6098576, b: 0.8741537, a: 1}
+  m_IndirectSpecularColor: {r: 1.0494972, g: 1.1319886, b: 1.2962784, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1250,6 +1250,7 @@ MonoBehaviour:
   rightHand: {fileID: 1486020554}
   minBrushWidth: 0.01
   maxBrushWidth: 0.1
+  textElements: []
 --- !u!1001 &695065203
 PrefabInstance:
   m_ObjectHideFlags: 0
