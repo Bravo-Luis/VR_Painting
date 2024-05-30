@@ -5,31 +5,13 @@ public class VoidEventListener : MonoBehaviour
 {
     [SerializeField] protected VoidEventChannelSO eventChannel;
 
-    public void Subscribe(VoidEventChannelSO channel)
+    protected virtual void OnEnable()
     {
-        Unsubscribe();
-        eventChannel = channel;
-        if (eventChannel != null)
-        {
-            eventChannel.AddAction(HandleEvent);
-            eventChannel.numListeners++;
-        }
+        eventChannel.OnEventRaised += HandleEvent;
     }
-    private void Unsubscribe()
+    protected virtual void OnDisable()
     {
-        if (eventChannel != null)
-        {
-            eventChannel.RemoveAction(HandleEvent);
-            eventChannel.numListeners--;
-        }
-    }
-    private void OnEnable()
-    {
-        Subscribe(eventChannel);
-    }
-    private void OnDisable()
-    {
-        Subscribe(null);
+        eventChannel.OnEventRaised -= HandleEvent;
     }
     protected virtual void HandleEvent()
     {

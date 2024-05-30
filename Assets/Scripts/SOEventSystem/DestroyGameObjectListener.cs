@@ -5,9 +5,4 @@ public class DestroyGameObjectListener : VoidEventListener
         base.HandleEvent();
         Destroy(gameObject);
     }
-
-    private void OnDestroy()
-    {
-        eventChannel.numListeners = 0;  
-    }
 }

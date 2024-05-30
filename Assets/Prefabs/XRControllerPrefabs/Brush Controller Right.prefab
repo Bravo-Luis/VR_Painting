@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 8940472766530396169}
   - component: {fileID: 6790060263839634518}
   - component: {fileID: 4670113077947048985}
-  - component: {fileID: 2107079897329250394}
+  - component: {fileID: 5536378450859716668}
   m_Layer: 6
   m_Name: 50%
   m_TagString: brushCollider
@@ -395,7 +395,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2107079897329250394
+--- !u!114 &5536378450859716668
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -404,10 +404,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4138914699608881917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abc214e21dfa1734a866266603ddc3b4, type: 3}
+  m_Script: {fileID: 11500000, guid: e5523c90f5bd55e4a862810188a904d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   eventChannel: {fileID: 11400000, guid: c2954fabc9888334b8356ff8d6605f04, type: 2}
+  value: 0.5
 --- !u!1 &5544732203421104826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,8 +1401,17 @@ LineRenderer:
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4

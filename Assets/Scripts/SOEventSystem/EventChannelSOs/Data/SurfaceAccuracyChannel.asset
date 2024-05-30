@@ -13,4 +13,3 @@ MonoBehaviour:
   m_Name: SurfaceAccuracyChannel
   m_EditorClassIdentifier: 
   description: SurfaceAccuracyChannel
-  numListeners: -2

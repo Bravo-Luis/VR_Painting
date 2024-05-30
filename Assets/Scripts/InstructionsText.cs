@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.XR.Interaction.Toolkit;
 using TMPro;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(TMP_Text))]
 public class InstructionsText : FloatEventListener
@@ -42,24 +41,28 @@ public class InstructionsText : FloatEventListener
         StartCoroutine(TypeText());
     }
 
-    void OnEnable()
+
+    protected override void OnEnable()
     {
+        base.OnEnable();
         inputActions.Enable();
         inputActions.XRActions.NextInstruction.performed += OnNextInstruction;
         inputActions.XRActions.PrevInstruction.performed += OnPrevInstruction;
     }
 
-    void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         inputActions.Disable();
         inputActions.XRActions.NextInstruction.performed -= OnNextInstruction;
         inputActions.XRActions.PrevInstruction.performed -= OnPrevInstruction;
     }
 
-    protected override void HandleEvent(float arg)
+
+    protected override void HandleEvent(float param)
     {
-        base.HandleEvent(arg);
-        if (arg <= 0.5f)
+        base.HandleEvent(param);
+        if (param <= 0.6f)
         {
             hasError = true;
             activatedError = true;
