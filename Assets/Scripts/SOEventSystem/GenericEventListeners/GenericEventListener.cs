@@ -5,7 +5,6 @@ public abstract class GenericEventListener<T> : MonoBehaviour
 {
     [SerializeField] protected GenericEventChannelSO<T> eventChannel;
 
-
     protected virtual void OnEnable()
     {
         eventChannel.OnEventRaised += HandleEvent;

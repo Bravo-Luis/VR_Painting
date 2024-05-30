@@ -7,7 +7,7 @@ public class VoidEventRaiser : MonoBehaviour
 
     protected virtual void TriggerEvent()
     {
-        Debug.Log($"void \"{eventChannel.description}\" broadcasted.");
+        Debug.Log($"void \"{eventChannel.description}\" is broadcasted by {gameObject.name}");
         eventChannel.RaiseEvent();
         if (oneShot) Destroy(this);
     }
