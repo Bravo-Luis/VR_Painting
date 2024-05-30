@@ -62,6 +62,33 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ToggleUI"",
+                    ""type"": ""Button"",
+                    ""id"": ""dcba1a8d-63cc-442c-b139-7504f9b3c715"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextInstruction"",
+                    ""type"": ""Button"",
+                    ""id"": ""e364b105-e343-477a-908e-3eaa9cf12345"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrevInstruction"",
+                    ""type"": ""Button"",
+                    ""id"": ""96ff5704-fc0a-4793-b775-feeef81538c6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -108,6 +135,39 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""BrushSize"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58d6eef1-5d27-47b3-b1f7-3603aa03bedc"",
+                    ""path"": ""<XRController>{RightHand}/menuButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c5d6cdce-8127-4011-9423-8bf4bc06f813"",
+                    ""path"": ""<XRController>{RightHand}/{PrimaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextInstruction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ce5b646-2031-41ff-b3e0-c71d24746751"",
+                    ""path"": ""<XRController>{RightHand}/{SecondaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrevInstruction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -120,6 +180,9 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
         m_XRActions_SwitchColor = m_XRActions.FindAction("SwitchColor", throwIfNotFound: true);
         m_XRActions_Undo = m_XRActions.FindAction("Undo", throwIfNotFound: true);
         m_XRActions_BrushSize = m_XRActions.FindAction("BrushSize", throwIfNotFound: true);
+        m_XRActions_ToggleUI = m_XRActions.FindAction("ToggleUI", throwIfNotFound: true);
+        m_XRActions_NextInstruction = m_XRActions.FindAction("NextInstruction", throwIfNotFound: true);
+        m_XRActions_PrevInstruction = m_XRActions.FindAction("PrevInstruction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -185,6 +248,9 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_XRActions_SwitchColor;
     private readonly InputAction m_XRActions_Undo;
     private readonly InputAction m_XRActions_BrushSize;
+    private readonly InputAction m_XRActions_ToggleUI;
+    private readonly InputAction m_XRActions_NextInstruction;
+    private readonly InputAction m_XRActions_PrevInstruction;
     public struct XRActionsActions
     {
         private @XRInputActions m_Wrapper;
@@ -193,6 +259,9 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
         public InputAction @SwitchColor => m_Wrapper.m_XRActions_SwitchColor;
         public InputAction @Undo => m_Wrapper.m_XRActions_Undo;
         public InputAction @BrushSize => m_Wrapper.m_XRActions_BrushSize;
+        public InputAction @ToggleUI => m_Wrapper.m_XRActions_ToggleUI;
+        public InputAction @NextInstruction => m_Wrapper.m_XRActions_NextInstruction;
+        public InputAction @PrevInstruction => m_Wrapper.m_XRActions_PrevInstruction;
         public InputActionMap Get() { return m_Wrapper.m_XRActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -214,6 +283,15 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
             @BrushSize.started += instance.OnBrushSize;
             @BrushSize.performed += instance.OnBrushSize;
             @BrushSize.canceled += instance.OnBrushSize;
+            @ToggleUI.started += instance.OnToggleUI;
+            @ToggleUI.performed += instance.OnToggleUI;
+            @ToggleUI.canceled += instance.OnToggleUI;
+            @NextInstruction.started += instance.OnNextInstruction;
+            @NextInstruction.performed += instance.OnNextInstruction;
+            @NextInstruction.canceled += instance.OnNextInstruction;
+            @PrevInstruction.started += instance.OnPrevInstruction;
+            @PrevInstruction.performed += instance.OnPrevInstruction;
+            @PrevInstruction.canceled += instance.OnPrevInstruction;
         }
 
         private void UnregisterCallbacks(IXRActionsActions instance)
@@ -230,6 +308,15 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
             @BrushSize.started -= instance.OnBrushSize;
             @BrushSize.performed -= instance.OnBrushSize;
             @BrushSize.canceled -= instance.OnBrushSize;
+            @ToggleUI.started -= instance.OnToggleUI;
+            @ToggleUI.performed -= instance.OnToggleUI;
+            @ToggleUI.canceled -= instance.OnToggleUI;
+            @NextInstruction.started -= instance.OnNextInstruction;
+            @NextInstruction.performed -= instance.OnNextInstruction;
+            @NextInstruction.canceled -= instance.OnNextInstruction;
+            @PrevInstruction.started -= instance.OnPrevInstruction;
+            @PrevInstruction.performed -= instance.OnPrevInstruction;
+            @PrevInstruction.canceled -= instance.OnPrevInstruction;
         }
 
         public void RemoveCallbacks(IXRActionsActions instance)
@@ -253,5 +340,8 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
         void OnSwitchColor(InputAction.CallbackContext context);
         void OnUndo(InputAction.CallbackContext context);
         void OnBrushSize(InputAction.CallbackContext context);
+        void OnToggleUI(InputAction.CallbackContext context);
+        void OnNextInstruction(InputAction.CallbackContext context);
+        void OnPrevInstruction(InputAction.CallbackContext context);
     }
 }
