@@ -150,7 +150,7 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c5d6cdce-8127-4011-9423-8bf4bc06f813"",
-                    ""path"": ""<XRController>{RightHand}/gripButton"",
+                    ""path"": ""<XRController>{RightHand}/{PrimaryButton}"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -161,7 +161,7 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5ce5b646-2031-41ff-b3e0-c71d24746751"",
-                    ""path"": ""<XRController>{LeftHand}/{GripButton}"",
+                    ""path"": ""<XRController>{RightHand}/{SecondaryButton}"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
