@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class GenericEventRaiser<T> : MonoBehaviour
 {
-    [SerializeField] private GenericEventChannelSO<T> eventChannel;
+    [SerializeField] protected GenericEventChannelSO<T> eventChannel;
 
     protected virtual void TriggerEvent(T param)
     {

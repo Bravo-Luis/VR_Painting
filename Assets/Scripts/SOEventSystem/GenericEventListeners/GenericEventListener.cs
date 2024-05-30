@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class GenericEventListener<T> : MonoBehaviour
 {
-    [SerializeField] private GenericEventChannelSO<T> eventChannel;
+    [SerializeField] protected GenericEventChannelSO<T> eventChannel;
 
     public void Subscribe(GenericEventChannelSO<T> channel)
     {
