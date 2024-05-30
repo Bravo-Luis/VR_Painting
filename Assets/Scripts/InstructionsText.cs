@@ -100,7 +100,17 @@ public class InstructionsText : FloatEventListener
         }
     }
 
+
     private void OnNextInstruction(InputAction.CallbackContext context)
+    {
+        NextInstruction();
+    }
+    private void OnPrevInstruction(InputAction.CallbackContext context)
+    {
+        PrevInstruction();
+    }
+
+    public void NextInstruction()
     {
         Debug.Log("NextInstruction");
 
@@ -116,12 +126,12 @@ public class InstructionsText : FloatEventListener
             new WaitForSeconds(typingSpeed);
         }
     }
-
-    private void OnPrevInstruction(InputAction.CallbackContext context)
+    public void PrevInstruction()
     {
         Debug.Log("PrevInstruction");
 
-        if(currTextInstructionIndex > 0 && !isTyping) {
+        if (currTextInstructionIndex > 0 && !isTyping)
+        {
             currTextInstructionIndex--;
             StartCoroutine(TypeText());
             new WaitForSeconds(typingSpeed);
