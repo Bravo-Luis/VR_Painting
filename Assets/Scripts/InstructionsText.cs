@@ -28,15 +28,14 @@ public class InstructionsText : VoidEventListener
     }
 
     void Start() {
-        fullText.Add("Welcome to VR Painting. Let's learn to paint a soccer ball. Press next to continue.");
-        fullText.Add("To start tracing the Soccer Ball model please click next after you finish each step");
+        fullText.Add("Welcome to VR Painting. Let's learn to paint a soccer ball. Please press the grip button on your right controller to continue to the next step.");
         fullText.Add("First, change your brush color to white by pressing the trigger on your left controller");
-        fullText.Add("Position yourself close to the transparent model of the soccer ball");
-        fullText.Add("Adjust the size of your brush using the (    ) button on the left controller so that it is easy to make small paint strokes");
-        fullText.Add("Use your right controller to fill in the white portions of the soccer ball");
-        fullText.Add("Change your brush color to black");
-        fullText.Add("Now fill in the black portions of the soccer ball");
-        fullText.Add("Great work! If you want to try a more difficult model you can try tracing the mushroom by selecting (    )");
+        fullText.Add("Position yourself close to the transparent model of the soccer ball by moving near the pedestal");
+        fullText.Add("Adjust the size of your brush using the left joystick so that it is easy to make detailed paint strokes");
+        fullText.Add("Move your right controller towards the soccerball model until it shows 100%. Use your right controller to trace over the white portions of the soccer ball. Try to keep your paint strokes as close to 100% accurate as possible while tracing the model");
+        fullText.Add("Now change your brush color to black");
+        fullText.Add("Lastly, fill in the black portions of the soccer ball while keeping as high an accuracy as possible");
+        fullText.Add("Great work! If you want to try a more difficult model you can try tracing the mushroom by selecting it from the table in front of you");
 
         StartCoroutine(TypeText());
     }

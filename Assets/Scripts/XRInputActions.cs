@@ -161,7 +161,7 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5ce5b646-2031-41ff-b3e0-c71d24746751"",
-                    ""path"": ""<XRController>{LeftHand}/secondaryButton"",
+                    ""path"": ""<XRController>{LeftHand}/{GripButton}"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

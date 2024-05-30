@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 1.0494972, g: 1.1319886, b: 1.2962784, a: 1}
+  m_IndirectSpecularColor: {r: 1.0493413, g: 1.1318372, b: 1.2962667, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1282,22 +1282,32 @@ PrefabInstance:
         Backward
         - decrease brush size
 
-        Right controller
+        Left Grip Button - go to previous step
+
+
+        Right
+        controller
 
         ----------------------
 
-        Right
-        trigger - paint
+        Right trigger - paint
 
-        Right menu - toggle UI'
+        Right
+        menu - toggle UI
+
+        Right Grip Button - go to next step'
       objectReference: {fileID: 0}
     - target: {fileID: 5703652879540175025, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
       propertyPath: m_fontSize
-      value: 3
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 5703652879540175025, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
       propertyPath: m_margin.w
-      value: -3.4145103
+      value: -5.0336733
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703652879540175025, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
+      propertyPath: m_margin.x
+      value: -0.15831327
       objectReference: {fileID: 0}
     - target: {fileID: 5703652879540175025, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
       propertyPath: m_margin.z
@@ -1309,7 +1319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5703652879540175025, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
       propertyPath: m_fontSizeBase
-      value: 3
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 5703652879540175025, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
       propertyPath: m_isRightToLeft
@@ -1409,7 +1419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5703652879540175034, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.33
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 5703652879540175034, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1579,8 +1589,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674683261}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.9, y: -2.122553, z: 0.72}
-  m_LocalScale: {x: 16.68707, y: 5, z: 0.001}
+  m_LocalPosition: {x: 0.9, y: -1.13, z: 0.72}
+  m_LocalScale: {x: 16.68707, y: 6.6945, z: 0.001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1960364600}
@@ -2246,20 +2256,40 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5703652879540175025, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
       propertyPath: m_text
-      value: Welcome to VR Painting. Let's learn to paint a soccer ball. Press next
-        to continue.
+      value: Welcome to VR Painting. Let's learn to paint a soccer ball. Please press
+        the grip button on your right controller to continue to the next step.
       objectReference: {fileID: 0}
     - target: {fileID: 5703652879540175025, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
       propertyPath: m_fontSize
-      value: 3
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703652879540175025, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
+      propertyPath: m_margin.w
+      value: -3.1157713
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703652879540175025, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
+      propertyPath: m_margin.x
+      value: 0.34159756
       objectReference: {fileID: 0}
     - target: {fileID: 5703652879540175025, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
       propertyPath: m_margin.z
       value: -5.3652763
       objectReference: {fileID: 0}
     - target: {fileID: 5703652879540175025, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
+      propertyPath: m_lineSpacing
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703652879540175025, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
       propertyPath: m_fontSizeBase
-      value: 3
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703652879540175025, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703652879540175025, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5703652879540175030, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
       propertyPath: fullText
@@ -2268,6 +2298,10 @@ PrefabInstance:
     - target: {fileID: 5703652879540175030, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703652879540175030, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
+      propertyPath: typingSpeed
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5703652879540175030, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
       propertyPath: repeatInterval
@@ -2355,7 +2389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5703652879540175034, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.39000002
+      value: 0.51
       objectReference: {fileID: 0}
     - target: {fileID: 5703652879540175034, guid: 878fc21a494e1b841a7e5465d4a124ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4062,8 +4096,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960364599}
-  m_LocalRotation: {x: -0, y: 0.38212878, z: -0, w: 0.92410916}
-  m_LocalPosition: {x: 6.45, y: 3.3500001, z: 3.1701643}
+  m_LocalRotation: {x: -0, y: 0.13648176, z: -0, w: 0.9906426}
+  m_LocalPosition: {x: 3.2434044, y: 3.57, z: 9.385255}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4072,7 +4106,7 @@ Transform:
   - {fileID: 1581961251}
   m_Father: {fileID: 1685337705}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 44.931, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 15.689, z: 0}
 --- !u!1 &2019813578
 GameObject:
   m_ObjectHideFlags: 0
