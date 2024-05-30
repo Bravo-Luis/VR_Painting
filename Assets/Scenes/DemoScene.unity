@@ -1720,7 +1720,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148909441330}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.503, y: -1.245, z: -0.8}
+  m_LocalPosition: {x: -0.562, y: -1.245, z: -1.002}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2560,7 +2560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5893533803388653826, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -481.38678
+      value: -481.49118
       objectReference: {fileID: 0}
     - target: {fileID: 5893533803393180994, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2628,11 +2628,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5893533803813445190, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -481.38443
+      value: -481.4888
       objectReference: {fileID: 0}
     - target: {fileID: 5968362576681363837, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
       propertyPath: m_text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968362576681363837, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+      propertyPath: m_fontSize
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968362576681363837, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 6086189720698860065, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
       propertyPath: m_IsTrigger
@@ -2665,6 +2673,10 @@ PrefabInstance:
     - target: {fileID: 7511691298456137310, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.2225
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511691298456137310, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7867181294664463054, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
       propertyPath: m_InteractionManager
@@ -2812,6 +2824,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8724966505418858484, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8724966505418858485, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.19
@@ -2834,7 +2850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8905038891736013871, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.88
+      value: 1.286
       objectReference: {fileID: 0}
     - target: {fileID: 8905038891736013871, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2842,7 +2858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8905038891736013871, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.34
+      value: 4.708
       objectReference: {fileID: 0}
     - target: {fileID: 8905038891736013871, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2879,6 +2895,10 @@ PrefabInstance:
     - target: {fileID: 9181282935463035776, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.923
+      objectReference: {fileID: 0}
+    - target: {fileID: 9181282935463035777, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9181282935463035778, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
       propertyPath: m_InteractionManager
