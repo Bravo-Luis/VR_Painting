@@ -15,10 +15,17 @@ public class InstructionsText : FloatEventListener
     private bool isTyping = false;
     private bool hasError = false;
     private bool activatedError = false;
+    private bool isFirstTime1 = true;
+    private bool isFirstTime4 = true;
+    private bool isFirstTime5 = true;
+    private bool userCorrect = false;
 
     public int currTextInstructionIndex = 0;
-    public float typingSpeed = 100f;
+    public float typingSpeed = 100.0f;
     public bool playOnAwake;
+
+    public TextMeshProUGUI colorText;
+    public TMP_Text collisionText;
 
     private void Awake()
     {
@@ -86,6 +93,18 @@ public class InstructionsText : FloatEventListener
         {
             printText = fullText[currTextInstructionIndex];
         }
+
+        userCorrect = false;
+        if(currTextInstructionIndex == 1 && colorText.text != "White" && !isFirstTime1) {
+            printText = "You have not changed your brush color to white. Please try again by using the left trigger until the color is white";
+        } else if(currTextInstructionIndex == 4 && collisionText.text != "100%" && !isFirstTime4) {
+            printText = "Please move your right controller until the it says 100% to ensure you are in the right spot.";
+        } else if(currTextInstructionIndex == 5 && colorText.text != "Black" && !isFirstTime5) {
+            printText = "You have not changed your brush color to black. Please try again by using the left trigger until the color is black";
+        } else {
+            userCorrect = true;
+        }
+
         Debug.Log(fullText[currTextInstructionIndex]);
         isTyping = true;
         foreach (char c in printText)
@@ -93,12 +112,46 @@ public class InstructionsText : FloatEventListener
             textComponent.text += c;
             yield return new WaitForSeconds(typingSpeed);
         }
+        
         isTyping = false;
     }
 
     private void OnNextInstruction(InputAction.CallbackContext context)
     {
         Debug.Log("NextInstruction");
+        userCorrect = false;
+        if(currTextInstructionIndex == 1 && colorText.text != "White" && isFirstTime1 && !isTyping) {
+            isFirstTime1 = false;
+            StartCoroutine(TypeText());
+            new WaitForSeconds(typingSpeed);
+        }
+
+        if(currTextInstructionIndex == 4 && collisionText.text != "100%" && isFirstTime4 && !isTyping) {
+            isFirstTime4 = false;
+            StartCoroutine(TypeText());
+            new WaitForSeconds(typingSpeed);
+        }
+
+        if(currTextInstructionIndex == 5 && colorText.text != "Black" && isFirstTime5 && !isTyping) {
+            isFirstTime5 = false;
+            StartCoroutine(TypeText());
+            new WaitForSeconds(typingSpeed);
+        }
+
+        if(currTextInstructionIndex == 1 && colorText.text != "White") {
+            new WaitForSeconds(typingSpeed);
+            return;
+        }
+
+        if(currTextInstructionIndex == 4 && collisionText.text != "100%") {
+            new WaitForSeconds(typingSpeed);
+            return;
+        }
+
+        if(currTextInstructionIndex == 5 && colorText.text != "Black") {
+            new WaitForSeconds(typingSpeed);
+            return;
+        }
 
         if (activatedError && !isTyping)
         {
