@@ -83,27 +83,28 @@ public class InstructionsText : FloatEventListener
         if (hasError)
         {
             hasError = false;
-            printText = "You have made a brush stroke that is too far from the model. Please undo your last stroke using the menu button on your left controller and try again. Press next to return to the instructions";
+            textComponent.color = new Color32(200, 0, 0, 255);
+            textComponent.text = "You have made a brush stroke that is too far from the model. Please undo your last stroke using the menu button on your left controller and try again. Press next to return to the instructions";
         }
         else
         {
-            printText = fullText[currTextInstructionIndex];
+            textComponent.color = new Color32(255, 255, 255, 255);
+            Debug.Log(fullText[currTextInstructionIndex]);
+            isTyping = true;
+            foreach (char c in fullText[currTextInstructionIndex])
+            {
+                textComponent.text += c;
+                yield return new WaitForSeconds(typingSpeed);
+            }
+            isTyping = false;
         }
-        Debug.Log(fullText[currTextInstructionIndex]);
-        isTyping = true;
-        foreach (char c in printText)
-        {
-            textComponent.text += c;
-            yield return new WaitForSeconds(typingSpeed);
-        }
-        isTyping = false;
     }
 
     private void OnNextInstruction(InputAction.CallbackContext context)
     {
         Debug.Log("NextInstruction");
 
-        if (activatedError && !isTyping)
+        if (activatedError)
         {
             activatedError = false;
             StartCoroutine(TypeText());
