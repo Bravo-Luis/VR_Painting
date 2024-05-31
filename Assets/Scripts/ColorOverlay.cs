@@ -22,7 +22,8 @@ public class ColorOverlay : MonoBehaviour
         {
             Color currentColor = drawingController.GetCurrentColor();
             colorText.text = $"{ColorToString(currentColor)}";
-            colorText.color = currentColor; 
+            colorText.color = currentColor;
+            SendMessage("TriggerEvent", (Vector4)currentColor);
         }
     }
 

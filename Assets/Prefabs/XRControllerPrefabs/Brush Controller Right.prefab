@@ -456,6 +456,7 @@ GameObject:
   - component: {fileID: 2558909439573093658}
   - component: {fileID: 2544615954425641529}
   - component: {fileID: 1499324310503753968}
+  - component: {fileID: 6982061762660525842}
   m_Layer: 0
   m_Name: Brush
   m_TagString: Untagged
@@ -528,6 +529,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6982061762660525842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6467776194394091695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a55b4f0817f74544b6772fbb6f973ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventChannel: {fileID: 11400000, guid: ed797d7dcfdfea146932294f81ccef09, type: 2}
 --- !u!1 &6516566229208270501
 GameObject:
   m_ObjectHideFlags: 0
