@@ -26,7 +26,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180218200013892758}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.51}
+  m_LocalPosition: {x: 0, y: 0, z: -0.53}
   m_LocalScale: {x: 0.39325, y: 0.6687042, z: 0.4254801}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8984794696702196130, guid: 9c844df65cd1c32438a24c7292753978, type: 2}
+  - {fileID: -2405938394274985072, guid: 1ff83792ef3c6aa4ebcc60f8f27b495c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,8 +102,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Next
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9c844df65cd1c32438a24c7292753978, type: 2}
-  m_sharedMaterial: {fileID: -8984794696702196130, guid: 9c844df65cd1c32438a24c7292753978, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1ff83792ef3c6aa4ebcc60f8f27b495c, type: 2}
+  m_sharedMaterial: {fileID: -2405938394274985072, guid: 1ff83792ef3c6aa4ebcc60f8f27b495c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -127,15 +127,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 8.42
+  m_fontSizeBase: 8.42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 8.985186, y: 1.8362274, z: 8.826637, w: 1.8598604}
+  m_margin: {x: 8.810056, y: 1.6500378, z: 8.70089, w: 1.8854167}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -201,8 +201,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6224846323231937501}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.099, y: -3.69, z: 0.961}
-  m_LocalScale: {x: 1.691274, y: 0.9290389, z: 0.76961476}
+  m_LocalPosition: {x: 2.102, y: -3.69, z: 0.961}
+  m_LocalScale: {x: 1.691274, y: 0.9290389, z: 0.1801899}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5168707039571313942}
