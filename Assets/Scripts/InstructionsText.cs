@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.XR.Interaction.Toolkit;
 
 [RequireComponent(typeof(TMP_Text))]
 public class InstructionsText : FloatEventListener
@@ -25,6 +26,8 @@ public class InstructionsText : FloatEventListener
 
     public TextMeshProUGUI colorText;
     public TMP_Text collisionText;
+
+    public SurfaceAccuracyChangeEventListener surfaceAccuracyChangeEventListener;
 
     private void Awake()
     {
@@ -87,8 +90,10 @@ public class InstructionsText : FloatEventListener
     {
         textComponent.text = "";
         string printText;
+        // inputActions.XRActions.DrawAction.ReadValue<float>() > 0.1f
         if (hasError)
         {
+            Debug.Log("Painting with error");
             hasError = false;
             textComponent.color = new Color32(200, 0, 0, 255);
             textComponent.text = "You have made a brush stroke that is too far from the model. Please undo your last stroke using the menu button on your left controller and try again. Press next to return to the instructions";
@@ -127,6 +132,15 @@ public class InstructionsText : FloatEventListener
             new WaitForSeconds(typingSpeed);
         }
 
+        string perc = surfaceAccuracyChangeEventListener.GetComponent<SurfaceAccuracyChangeEventListener>().percent;
+
+        if(currTextInstructionIndex == 4 && perc != "100.00%" && isFirstTime4 && !isTyping) {
+            Debug.Log("Not 100%, real percent: " + perc);
+            isFirstTime4 = false;
+            StartCoroutine(TypeText());
+            new WaitForSeconds(typingSpeed);
+        }
+
         if(currTextInstructionIndex == 5 && colorText.text != "Black" && isFirstTime5 && !isTyping) {
             isFirstTime5 = false;
             StartCoroutine(TypeText());
@@ -134,6 +148,11 @@ public class InstructionsText : FloatEventListener
         }
 
         if(currTextInstructionIndex == 1 && colorText.text != "White") {
+            new WaitForSeconds(typingSpeed);
+            return;
+        }
+
+        if(currTextInstructionIndex == 4 && perc != "100.00%") {
             new WaitForSeconds(typingSpeed);
             return;
         }

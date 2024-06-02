@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.5219834, g: 0.6098576, b: 0.8741537, a: 1}
+  m_IndirectSpecularColor: {r: 1.0494972, g: 1.1319886, b: 1.2962784, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -263,6 +263,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8251786698425404654, guid: 16685f404bd71064e973b758f8b6303a, type: 3}
   m_PrefabInstance: {fileID: 274186490}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &492377206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5893533803653297658, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+  m_PrefabInstance: {fileID: 5893533803109879701}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a496140f2ba84d846bbb92128ebc03b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &611933005 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5893533803388653836, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+  m_PrefabInstance: {fileID: 5893533803109879701}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &707417214 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9107676037418452877, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
@@ -282,6 +304,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventChannel: {fileID: 11400000, guid: c2954fabc9888334b8356ff8d6605f04, type: 2}
   value: 0.7
+--- !u!114 &753344458 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2198315112832357660, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+  m_PrefabInstance: {fileID: 5893533803109879701}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56747607e994e1c4f97f9c758052cfdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &753344459 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5968362576681363837, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+  m_PrefabInstance: {fileID: 5893533803109879701}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &929898463 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8748113974390742706, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
@@ -2538,6 +2582,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2198315112832357660, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 753344459}
     - target: {fileID: 2397306706934074838, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
       propertyPath: defaultValue
       value: 1
@@ -2900,6 +2948,26 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1157241140}
+    - target: {fileID: 8905038890839827916, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
+      propertyPath: colorText
+      value: 
+      objectReference: {fileID: 611933005}
+    - target: {fileID: 8905038890839827916, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
+      propertyPath: typingSpeed
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905038890839827916, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
+      propertyPath: collisionText
+      value: 
+      objectReference: {fileID: 753344459}
+    - target: {fileID: 8905038890839827916, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
+      propertyPath: drawingController
+      value: 
+      objectReference: {fileID: 492377206}
+    - target: {fileID: 8905038890839827916, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
+      propertyPath: surfaceAccuracyChangeEventListener
+      value: 
+      objectReference: {fileID: 753344458}
     - target: {fileID: 8905038890998412611, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

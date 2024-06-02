@@ -7,6 +7,7 @@ using UnityEngine;
 public class SurfaceAccuracyChangeEventListener : FloatEventListener
 {
     TMP_Text m_Text;
+    public string percent = "";
     private void Awake()
     {
         m_Text = GetComponent<TMP_Text>();
@@ -24,6 +25,7 @@ public class SurfaceAccuracyChangeEventListener : FloatEventListener
         float percentage = param * 100;
         StopAllCoroutines();
         m_Text.text = percentage.ToString("F2") + "%";
+        percent = m_Text.text;
         StartCoroutine(HideText());
     }
 
