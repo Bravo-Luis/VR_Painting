@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.XR.Interaction.Toolkit;
 using TMPro;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(TMP_Text))]
 public class InstructionsText : FloatEventListener
@@ -49,24 +48,28 @@ public class InstructionsText : FloatEventListener
         StartCoroutine(TypeText());
     }
 
-    void OnEnable()
+
+    protected override void OnEnable()
     {
+        base.OnEnable();
         inputActions.Enable();
         inputActions.XRActions.NextInstruction.performed += OnNextInstruction;
         inputActions.XRActions.PrevInstruction.performed += OnPrevInstruction;
     }
 
-    void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         inputActions.Disable();
         inputActions.XRActions.NextInstruction.performed -= OnNextInstruction;
         inputActions.XRActions.PrevInstruction.performed -= OnPrevInstruction;
     }
 
-    protected override void HandleEvent(float arg)
+
+    protected override void HandleEvent(float param)
     {
-        base.HandleEvent(arg);
-        if (arg <= 0.5f)
+        base.HandleEvent(param);
+        if (param <= 0.6f)
         {
             hasError = true;
             activatedError = true;
@@ -87,47 +90,39 @@ public class InstructionsText : FloatEventListener
         if (hasError)
         {
             hasError = false;
-            printText = "You have made a brush stroke that is too far from the model. Please undo your last stroke using the menu button on your left controller and try again. Press next to return to the instructions";
+            textComponent.color = new Color32(200, 0, 0, 255);
+            textComponent.text = "You have made a brush stroke that is too far from the model. Please undo your last stroke using the menu button on your left controller and try again. Press next to return to the instructions";
         }
         else
         {
-            printText = fullText[currTextInstructionIndex];
+            textComponent.color = new Color32(255, 255, 255, 255);
+            Debug.Log(fullText[currTextInstructionIndex]);
+            isTyping = true;
+            foreach (char c in fullText[currTextInstructionIndex])
+            {
+                textComponent.text += c;
+                yield return new WaitForSeconds(typingSpeed);
+            }
+            isTyping = false;
         }
-
-        userCorrect = false;
-        if(currTextInstructionIndex == 1 && colorText.text != "White" && !isFirstTime1) {
-            printText = "You have not changed your brush color to white. Please try again by using the left trigger until the color is white";
-        } else if(currTextInstructionIndex == 4 && collisionText.text != "100%" && !isFirstTime4) {
-            printText = "Please move your right controller until the it says 100% to ensure you are in the right spot.";
-        } else if(currTextInstructionIndex == 5 && colorText.text != "Black" && !isFirstTime5) {
-            printText = "You have not changed your brush color to black. Please try again by using the left trigger until the color is black";
-        } else {
-            userCorrect = true;
-        }
-
-        Debug.Log(fullText[currTextInstructionIndex]);
-        isTyping = true;
-        foreach (char c in printText)
-        {
-            textComponent.text += c;
-            yield return new WaitForSeconds(typingSpeed);
-        }
-        
-        isTyping = false;
     }
 
+
     private void OnNextInstruction(InputAction.CallbackContext context)
+    {
+        NextInstruction();
+    }
+    private void OnPrevInstruction(InputAction.CallbackContext context)
+    {
+        PrevInstruction();
+    }
+
+    public void NextInstruction()
     {
         Debug.Log("NextInstruction");
         userCorrect = false;
         if(currTextInstructionIndex == 1 && colorText.text != "White" && isFirstTime1 && !isTyping) {
             isFirstTime1 = false;
-            StartCoroutine(TypeText());
-            new WaitForSeconds(typingSpeed);
-        }
-
-        if(currTextInstructionIndex == 4 && collisionText.text != "100%" && isFirstTime4 && !isTyping) {
-            isFirstTime4 = false;
             StartCoroutine(TypeText());
             new WaitForSeconds(typingSpeed);
         }
@@ -143,17 +138,12 @@ public class InstructionsText : FloatEventListener
             return;
         }
 
-        if(currTextInstructionIndex == 4 && collisionText.text != "100%") {
-            new WaitForSeconds(typingSpeed);
-            return;
-        }
-
         if(currTextInstructionIndex == 5 && colorText.text != "Black") {
             new WaitForSeconds(typingSpeed);
             return;
         }
 
-        if (activatedError && !isTyping)
+        if (activatedError)
         {
             activatedError = false;
             StartCoroutine(TypeText());
@@ -165,12 +155,12 @@ public class InstructionsText : FloatEventListener
             new WaitForSeconds(typingSpeed);
         }
     }
-
-    private void OnPrevInstruction(InputAction.CallbackContext context)
+    public void PrevInstruction()
     {
         Debug.Log("PrevInstruction");
 
-        if(currTextInstructionIndex > 0 && !isTyping) {
+        if (currTextInstructionIndex > 0 && !isTyping)
+        {
             currTextInstructionIndex--;
             StartCoroutine(TypeText());
             new WaitForSeconds(typingSpeed);
