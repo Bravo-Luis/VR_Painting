@@ -19,8 +19,12 @@ public class InstructionsText : FloatEventListener
     public float typingSpeed = 100f;
     public bool playOnAwake;
 
+    public AudioClip[] instructionAudioClips; // Array to hold audio clips
+    private AudioSource audioSource;
+
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>(); // Get the AudioSource component
         textComponent = GetComponent<TMP_Text>();
         textComponent.text = "";
         if (playOnAwake) StartCoroutine(TypeText());
@@ -91,6 +95,16 @@ public class InstructionsText : FloatEventListener
             textComponent.color = new Color32(255, 255, 255, 255);
             Debug.Log(fullText[currTextInstructionIndex]);
             isTyping = true;
+
+            // Play the corresponding audio clip
+            if (currTextInstructionIndex < instructionAudioClips.Length)
+            {
+                audioSource.clip = instructionAudioClips[currTextInstructionIndex];
+                audioSource.Play();
+            }
+
+
+
             foreach (char c in fullText[currTextInstructionIndex])
             {
                 textComponent.text += c;
