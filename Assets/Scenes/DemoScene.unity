@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.5220727, g: 0.60992473, b: 0.87422293, a: 1}
+  m_IndirectSpecularColor: {r: 1.0493413, g: 1.1318372, b: 1.2962667, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3362,6 +3362,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1157241140}
+    - target: {fileID: 8905038890839827916, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
+      propertyPath: typingSpeed
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 8905038890839827916, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
       propertyPath: instructionAudioClips.Array.size
       value: 8
