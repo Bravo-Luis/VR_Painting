@@ -18,7 +18,6 @@ public class InstructionsText : FloatEventListener
     private bool isFirstTime1 = true;
     private bool isFirstTime4 = true;
     private bool isFirstTime5 = true;
-    private bool userCorrect = false;
 
     public int currTextInstructionIndex = 0;
     public float typingSpeed = 100.0f;
@@ -72,7 +71,7 @@ public class InstructionsText : FloatEventListener
     protected override void HandleEvent(float param)
     {
         base.HandleEvent(param);
-        if (param <= 0.6f)
+        if (param <= 0.6f && inputActions.XRActions.DrawAction.ReadValue<float>() > 0.1f)
         {
             hasError = true;
             activatedError = true;
@@ -103,7 +102,17 @@ public class InstructionsText : FloatEventListener
             textComponent.color = new Color32(255, 255, 255, 255);
             Debug.Log(fullText[currTextInstructionIndex]);
             isTyping = true;
-            foreach (char c in fullText[currTextInstructionIndex])
+            string perc = surfaceAccuracyChangeEventListener.GetComponent<SurfaceAccuracyChangeEventListener>().percent;
+            if(currTextInstructionIndex == 1 && colorText.text != "White" && !isFirstTime1) {
+                printText = "You have not changed your brush color to white. Please try again by using the left trigger until the color is white";
+            } else if(currTextInstructionIndex == 4 && perc != "100.00%" && !isFirstTime4) {
+                printText = "Please move your right controller until the it says 100% to ensure you are in the right spot.";
+            } else if(currTextInstructionIndex == 5 && colorText.text != "Black" && !isFirstTime5) {
+                printText = "You have not changed your brush color to black. Please try again by using the left trigger until the color is black";
+            } else {
+                printText = fullText[currTextInstructionIndex];
+            }
+             foreach (char c in printText)
             {
                 textComponent.text += c;
                 yield return new WaitForSeconds(typingSpeed);
@@ -125,7 +134,6 @@ public class InstructionsText : FloatEventListener
     public void NextInstruction()
     {
         Debug.Log("NextInstruction");
-        userCorrect = false;
         if(currTextInstructionIndex == 1 && colorText.text != "White" && isFirstTime1 && !isTyping) {
             isFirstTime1 = false;
             StartCoroutine(TypeText());
@@ -135,7 +143,6 @@ public class InstructionsText : FloatEventListener
         string perc = surfaceAccuracyChangeEventListener.GetComponent<SurfaceAccuracyChangeEventListener>().percent;
 
         if(currTextInstructionIndex == 4 && perc != "100.00%" && isFirstTime4 && !isTyping) {
-            Debug.Log("Not 100%, real percent: " + perc);
             isFirstTime4 = false;
             StartCoroutine(TypeText());
             new WaitForSeconds(typingSpeed);
@@ -147,17 +154,17 @@ public class InstructionsText : FloatEventListener
             new WaitForSeconds(typingSpeed);
         }
 
-        if(currTextInstructionIndex == 1 && colorText.text != "White") {
+        if(currTextInstructionIndex == 1 && colorText.text != "White" && !hasError) {
             new WaitForSeconds(typingSpeed);
             return;
         }
 
-        if(currTextInstructionIndex == 4 && perc != "100.00%") {
+        if(currTextInstructionIndex == 4 && perc != "100.00%" && !hasError) {
             new WaitForSeconds(typingSpeed);
             return;
         }
 
-        if(currTextInstructionIndex == 5 && colorText.text != "Black") {
+        if(currTextInstructionIndex == 5 && colorText.text != "Black" && !hasError) {
             new WaitForSeconds(typingSpeed);
             return;
         }
