@@ -6,7 +6,6 @@ using UnityEngine;
 public class SurfaceAccuracyChangeEventListener : FloatEventListener
 {
     [SerializeField] private TMP_Text m_Text;
-    public string percent;
 
     protected override void HandleEvent(float param)
     {
@@ -16,7 +15,7 @@ public class SurfaceAccuracyChangeEventListener : FloatEventListener
             m_Text.text = string.Empty;
             return;
         }
-        param = Mathf.Clamp01(param);
+        param = Mathf.Clamp01(param);   
         float percentage = param * 100;
 
 
@@ -32,10 +31,10 @@ public class SurfaceAccuracyChangeEventListener : FloatEventListener
         //}
 
         StopAllCoroutines();
-        
         m_Text.text = percentage.ToString("F2") + "%";
-        percent = m_Text.text;
         StartCoroutine(HideText());
+
+
     }
 
     IEnumerator HideText()
