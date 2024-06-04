@@ -131,9 +131,9 @@ private TMP_Text textComponent;
             } else if(currTextInstructionIndex == 14 && colorText.text != "Black" && !isFirstTime14) {
                 printText = "You have not changed your brush color to black. Please try again by using the left trigger until the color is black";
             } else if(currTextInstructionIndex == 15 && colorText.text != "Red" && !isFirstTime15) {
-                printText = "You have not changed your brush color to red. Please try again by using the left trigger until the color is black";
+                printText = "You have not changed your brush color to red. Please try again by using the left trigger until the color is red";
             } else if(currTextInstructionIndex == 16 && colorText.text != "White" && !isFirstTime16) {
-                printText = "You have not changed your brush color to white. Please try again by using the left trigger until the color is black";
+                printText = "You have not changed your brush color to white. Please try again by using the left trigger until the color is white";
             } else {
                 printText = fullText[currTextInstructionIndex];
             }
