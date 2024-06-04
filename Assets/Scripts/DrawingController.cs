@@ -184,10 +184,6 @@ public class DrawingController : MonoBehaviour
         return brushWidth;
     }
 
-    public void SetCurrentColor(Color color)
-    {
-        currentColor = color;
-    }
 
     public Color GetCurrentColor()
     {
@@ -220,4 +216,5 @@ public class DrawingController : MonoBehaviour
         }
         Debug.Log("Toggled UI");
     }
+
 }
