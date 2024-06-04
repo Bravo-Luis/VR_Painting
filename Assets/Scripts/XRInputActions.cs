@@ -89,6 +89,15 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotateModel"",
+                    ""type"": ""Value"",
+                    ""id"": ""f757567e-a268-48fc-873f-e30edfabfb8d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -168,6 +177,17 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""PrevInstruction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a9d2ff96-5ffc-4a09-8353-f9f9a0beb0f6"",
+                    ""path"": ""<XRController>{RightHand}/primary2DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateModel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -183,6 +203,7 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
         m_XRActions_ToggleUI = m_XRActions.FindAction("ToggleUI", throwIfNotFound: true);
         m_XRActions_NextInstruction = m_XRActions.FindAction("NextInstruction", throwIfNotFound: true);
         m_XRActions_PrevInstruction = m_XRActions.FindAction("PrevInstruction", throwIfNotFound: true);
+        m_XRActions_RotateModel = m_XRActions.FindAction("RotateModel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,6 +272,7 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_XRActions_ToggleUI;
     private readonly InputAction m_XRActions_NextInstruction;
     private readonly InputAction m_XRActions_PrevInstruction;
+    private readonly InputAction m_XRActions_RotateModel;
     public struct XRActionsActions
     {
         private @XRInputActions m_Wrapper;
@@ -262,6 +284,7 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
         public InputAction @ToggleUI => m_Wrapper.m_XRActions_ToggleUI;
         public InputAction @NextInstruction => m_Wrapper.m_XRActions_NextInstruction;
         public InputAction @PrevInstruction => m_Wrapper.m_XRActions_PrevInstruction;
+        public InputAction @RotateModel => m_Wrapper.m_XRActions_RotateModel;
         public InputActionMap Get() { return m_Wrapper.m_XRActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -292,6 +315,9 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
             @PrevInstruction.started += instance.OnPrevInstruction;
             @PrevInstruction.performed += instance.OnPrevInstruction;
             @PrevInstruction.canceled += instance.OnPrevInstruction;
+            @RotateModel.started += instance.OnRotateModel;
+            @RotateModel.performed += instance.OnRotateModel;
+            @RotateModel.canceled += instance.OnRotateModel;
         }
 
         private void UnregisterCallbacks(IXRActionsActions instance)
@@ -317,6 +343,9 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
             @PrevInstruction.started -= instance.OnPrevInstruction;
             @PrevInstruction.performed -= instance.OnPrevInstruction;
             @PrevInstruction.canceled -= instance.OnPrevInstruction;
+            @RotateModel.started -= instance.OnRotateModel;
+            @RotateModel.performed -= instance.OnRotateModel;
+            @RotateModel.canceled -= instance.OnRotateModel;
         }
 
         public void RemoveCallbacks(IXRActionsActions instance)
@@ -343,5 +372,6 @@ public partial class @XRInputActions: IInputActionCollection2, IDisposable
         void OnToggleUI(InputAction.CallbackContext context);
         void OnNextInstruction(InputAction.CallbackContext context);
         void OnPrevInstruction(InputAction.CallbackContext context);
+        void OnRotateModel(InputAction.CallbackContext context);
     }
 }

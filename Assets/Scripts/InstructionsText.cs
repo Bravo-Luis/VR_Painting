@@ -8,16 +8,27 @@ using Unity.VisualScripting;
 [RequireComponent(typeof(TMP_Text))]
 public class InstructionsText : FloatEventListener
 {
-    private TMP_Text textComponent;
+private TMP_Text textComponent;
     private List<string> fullText = new List<string>(10);
     private XRInputActions inputActions;
     private bool isTyping = false;
     private bool hasError = false;
     private bool activatedError = false;
+    private bool isFirstTime2 = true;
+    private bool isFirstTime5 = true;
+    private bool isFirstTime6 = true;
+    private bool isFirstTime10 = true;
+    private bool isFirstTime13 = true;
+    private bool isFirstTime14 = true;
+    private bool isFirstTime15 = true;
 
     public int currTextInstructionIndex = 0;
-    public float typingSpeed = 100f;
+    public float typingSpeed = 100.0f;
     public bool playOnAwake;
+
+    public TextMeshProUGUI colorText;
+
+    public SurfaceAccuracyChangeEventListener surfaceAccuracyChangeEventListener;
 
     public AudioClip[] instructionAudioClips; // Array to hold audio clips
     private AudioSource audioSource;
@@ -45,10 +56,10 @@ public class InstructionsText : FloatEventListener
 
         fullText.Add("To get started with tracing the mushroom, please make sure it is selected by pointing your left controller at the mushroom on the table and pressing the left grip button");
         fullText.Add("Change your brush color to yellow by pressing the trigger on your left controller");
-        fullText.Add("Make sure the size of your brush is suiable for making detailed paint strokes");
+        fullText.Add("Make sure the size of your brush is suitable for making detailed paint strokes");
         fullText.Add("Fill in the yellow areas of the mushroom stem with your right controller while maintaining as high an accuracy as possible");
         fullText.Add("Next, change your brush color to black and fill in the black spots on the stem");
-        fullText.Add("Great job! The next step is to step change your brush color to red and fill in the red parts of the mushroom cap, make sure to fill in the underside of the cap as well");
+        fullText.Add("Great job! The next step is to change your brush color to red and fill in the red parts of the mushroom cap, make sure to fill in the underside of the cap as well");
         fullText.Add("Lastly, change your brush color to white and fill in the white areas on the mushroom cap");
         fullText.Add("Great work! You have finished the guided VR painting tutorial!");
 
@@ -76,7 +87,7 @@ public class InstructionsText : FloatEventListener
     protected override void HandleEvent(float param)
     {
         base.HandleEvent(param);
-        if (param <= 0.6f)
+        if (param <= 0.6f && inputActions.XRActions.DrawAction.ReadValue<float>() > 0.1f)
         {
             hasError = true;
             activatedError = true;
@@ -90,12 +101,15 @@ public class InstructionsText : FloatEventListener
     }
 
 
+
     IEnumerator TypeText()
     {
         textComponent.text = "";
         string printText;
+        // inputActions.XRActions.DrawAction.ReadValue<float>() > 0.1f
         if (hasError)
         {
+            Debug.Log("Painting with error");
             hasError = false;
             textComponent.color = new Color32(200, 0, 0, 255);
             textComponent.text = "You have made a brush stroke that is too far from the model. Please undo your last stroke using the menu button on your left controller and try again. Press next to return to the instructions";
@@ -105,17 +119,31 @@ public class InstructionsText : FloatEventListener
             textComponent.color = new Color32(255, 255, 255, 255);
             Debug.Log(fullText[currTextInstructionIndex]);
             isTyping = true;
-
+            string perc = surfaceAccuracyChangeEventListener.GetComponent<SurfaceAccuracyChangeEventListener>().percent;
+            if(currTextInstructionIndex == 2 && colorText.text != "White" && !isFirstTime2) {
+                printText = "You have not changed your brush color to white. Please try again by using the left trigger until the color is white";
+            } else if(currTextInstructionIndex == 5 && perc != "100.00%" && !isFirstTime5) {
+                printText = "Please move your right controller until the it says 100% to ensure you are in the right spot.";
+            } else if(currTextInstructionIndex == 6 && colorText.text != "Black" && !isFirstTime6) {
+                printText = "You have not changed your brush color to black. Please try again by using the left trigger until the color is black";
+            } else if(currTextInstructionIndex == 10 && colorText.text != "Yellow" && !isFirstTime10) {
+                printText = "You have not changed your brush color to yellow. Please try again by using the left trigger until the color is yellow";
+            } else if(currTextInstructionIndex == 13 && colorText.text != "Black" && !isFirstTime13) {
+                printText = "You have not changed your brush color to black. Please try again by using the left trigger until the color is black";
+            } else if(currTextInstructionIndex == 14 && colorText.text != "Red" && !isFirstTime14) {
+                printText = "You have not changed your brush color to red. Please try again by using the left trigger until the color is red";
+            } else if(currTextInstructionIndex == 15 && colorText.text != "White" && !isFirstTime15) {
+                printText = "You have not changed your brush color to white. Please try again by using the left trigger until the color is white";
+            } else {
+                printText = fullText[currTextInstructionIndex];
+            }
             // Play the corresponding audio clip
             if (currTextInstructionIndex < instructionAudioClips.Length)
             {
                 audioSource.clip = instructionAudioClips[currTextInstructionIndex];
                 audioSource.Play();
             }
-
-
-
-            foreach (char c in fullText[currTextInstructionIndex])
+            foreach (char c in printText)
             {
                 textComponent.text += c;
                 yield return new WaitForSeconds(typingSpeed);
@@ -137,6 +165,84 @@ public class InstructionsText : FloatEventListener
     public void NextInstruction()
     {
         Debug.Log("NextInstruction");
+        if(currTextInstructionIndex == 2 && colorText.text != "White" && isFirstTime2 && !isTyping) {
+            isFirstTime2 = false;
+            StartCoroutine(TypeText());
+            new WaitForSeconds(typingSpeed);
+        }
+
+        string perc = surfaceAccuracyChangeEventListener.GetComponent<SurfaceAccuracyChangeEventListener>().percent;
+
+        if(currTextInstructionIndex == 5 && perc != "100.00%" && isFirstTime5 && !isTyping) {
+            isFirstTime5 = false;
+            StartCoroutine(TypeText());
+            new WaitForSeconds(typingSpeed);
+        }
+
+        if(currTextInstructionIndex == 6 && colorText.text != "Black" && isFirstTime6 && !isTyping) {
+            isFirstTime6 = false;
+            StartCoroutine(TypeText());
+            new WaitForSeconds(typingSpeed);
+        }
+
+        if(currTextInstructionIndex == 10 && colorText.text != "Yellow" && isFirstTime10 && !isTyping) {
+            isFirstTime10 = false;
+            StartCoroutine(TypeText());
+            new WaitForSeconds(typingSpeed);
+        }
+
+        if(currTextInstructionIndex == 13 && colorText.text != "Black" && isFirstTime13 && !isTyping) {
+            isFirstTime13 = false;
+            StartCoroutine(TypeText());
+            new WaitForSeconds(typingSpeed);
+        }
+
+        if(currTextInstructionIndex == 14 && colorText.text != "Red" && isFirstTime14 && !isTyping) {
+            isFirstTime14 = false;
+            StartCoroutine(TypeText());
+            new WaitForSeconds(typingSpeed);
+        }
+
+        if(currTextInstructionIndex == 15 && colorText.text != "White" && isFirstTime15 && !isTyping) {
+            isFirstTime15 = false;
+            StartCoroutine(TypeText());
+            new WaitForSeconds(typingSpeed);
+        }
+
+        if(currTextInstructionIndex == 2 && colorText.text != "White" && !hasError) {
+            new WaitForSeconds(typingSpeed);
+            return;
+        }
+
+        if(currTextInstructionIndex == 5 && perc != "100.00%" && !hasError) {
+            new WaitForSeconds(typingSpeed);
+            return;
+        }
+
+        if(currTextInstructionIndex == 6 && colorText.text != "Black" && !hasError) {
+            new WaitForSeconds(typingSpeed);
+            return;
+        }
+
+        if(currTextInstructionIndex == 10 && colorText.text != "Yellow" && !hasError) {
+            new WaitForSeconds(typingSpeed);
+            return;
+        }
+
+        if(currTextInstructionIndex == 13 && colorText.text != "Black" && !hasError) {
+            new WaitForSeconds(typingSpeed);
+            return;
+        }
+
+        if(currTextInstructionIndex == 14 && colorText.text != "Red" && !hasError) {
+            new WaitForSeconds(typingSpeed);
+            return;
+        }
+
+        if(currTextInstructionIndex == 15 && colorText.text != "White" && !hasError) {
+            new WaitForSeconds(typingSpeed);
+            return;
+        }
 
         if (activatedError)
         {
