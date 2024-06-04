@@ -8,6 +8,9 @@ public class DrawingController : MonoBehaviour
     public GameObject lineRendererPrefab; 
     public float brushWidth = 0.02f;
     public Transform rightHand; 
+    public Transform rotationCenter; // Center of rotation
+    public Transform rotationObjectSoccerBall; // Object that will also spin along with the lines
+    public Transform rotationObjectMushroom; // Object that will also spin along with the lines
 
     public float minBrushWidth = 0.01f; 
     public float maxBrushWidth = 0.1f; 
@@ -59,7 +62,8 @@ public class DrawingController : MonoBehaviour
             currentLineRenderer = null;
         }
 
-        UpdateBrushSize(); 
+        UpdateBrushSize();
+        RotateLines();
     }
 
     void StartNewLine()
@@ -129,6 +133,44 @@ public class DrawingController : MonoBehaviour
         }
     }
 
+    void RotateLines()
+    {
+        Vector2 rotationInput = inputActions.XRActions.RotateModel.ReadValue<Vector2>();
+        float rotationSpeed = 100f;
+
+        if (rotationInput != Vector2.zero && rotationCenter != null && (rotationObjectSoccerBall != null || rotationObjectMushroom != null))
+        {
+            
+            if (rotationObjectMushroom.gameObject.activeInHierarchy){
+                rotationObjectMushroom.RotateAround(rotationCenter.position, Vector3.up, -rotationInput.x * rotationSpeed * Time.deltaTime);
+                rotationObjectMushroom.RotateAround(rotationCenter.position, Vector3.right, rotationInput.y * rotationSpeed * Time.deltaTime);
+            } else if (rotationObjectSoccerBall.gameObject.activeInHierarchy){
+                rotationObjectSoccerBall.RotateAround(rotationCenter.position, Vector3.up, -rotationInput.x * rotationSpeed * Time.deltaTime);
+                rotationObjectSoccerBall.RotateAround(rotationCenter.position, Vector3.right, rotationInput.y * rotationSpeed * Time.deltaTime);
+            } else {
+                return;
+            }
+
+            foreach (var lineRendererObject in lineRenderers)
+            {
+                LineRenderer lineRenderer = lineRendererObject.GetComponent<LineRenderer>();
+                Vector3 centerPosition = rotationCenter.position;
+                for (int i = 0; i < lineRenderer.positionCount; i++)
+                {
+                    Vector3 point = lineRenderer.GetPosition(i);
+                    Vector3 direction = point - centerPosition;
+
+                    Quaternion rotationX = Quaternion.AngleAxis(-rotationInput.x * rotationSpeed * Time.deltaTime, Vector3.up);
+                    Quaternion rotationY = Quaternion.AngleAxis(rotationInput.y * rotationSpeed * Time.deltaTime, Vector3.right);
+                    Quaternion rotation = rotationX * rotationY;
+
+                    direction = rotation * direction;
+                    lineRenderer.SetPosition(i, centerPosition + direction);
+                }
+            }
+        }
+    }
+
     public float GetBrushWidth()
     {
         return brushWidth;
@@ -146,7 +188,6 @@ public class DrawingController : MonoBehaviour
 
     private void OnSwitchColor(InputAction.CallbackContext context)
     {
-
         currentColorIndex = (currentColorIndex + 1) % colorPalette.Count;
         currentColor = colorPalette[currentColorIndex];
         Debug.Log("Switched color to: " + currentColor);
@@ -162,6 +203,7 @@ public class DrawingController : MonoBehaviour
             Debug.Log("Undo last action");
         }
     }
+
     private void OnToggleUI(InputAction.CallbackContext context)
     {
         foreach (GameObject textElement in textElements)

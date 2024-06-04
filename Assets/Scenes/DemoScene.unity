@@ -788,6 +788,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4562462148570770778, guid: 5da66bd748deee546a4f0e4e6ca86c2c, type: 3}
   m_PrefabInstance: {fileID: 4562462149850214050}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1287261250 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8434825615183521334, guid: 16685f404bd71064e973b758f8b6303a, type: 3}
+  m_PrefabInstance: {fileID: 274186490}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1289203396
 GameObject:
   m_ObjectHideFlags: 0
@@ -3070,6 +3075,22 @@ PrefabInstance:
       propertyPath: rightHand
       value: 
       objectReference: {fileID: 1464472861}
+    - target: {fileID: 5893533803653297658, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+      propertyPath: rotationCenter
+      value: 
+      objectReference: {fileID: 1287261250}
+    - target: {fileID: 5893533803653297658, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+      propertyPath: rotationObject
+      value: 
+      objectReference: {fileID: 274186491}
+    - target: {fileID: 5893533803653297658, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+      propertyPath: rotationObjectMushroom
+      value: 
+      objectReference: {fileID: 1279607800}
+    - target: {fileID: 5893533803653297658, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+      propertyPath: rotationObjectSoccerBall
+      value: 
+      objectReference: {fileID: 274186491}
     - target: {fileID: 5893533803653297659, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
       propertyPath: m_RootOrder
       value: 4
