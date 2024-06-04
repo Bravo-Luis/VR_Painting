@@ -3,7 +3,7 @@ using UnityEngine;
 public class SetActiveBoolListener : BoolEventListener
 {
     [SerializeField] GameObject obj;
-    [SerializeField] bool setInactiveOnDiable = false;
+    [SerializeField] bool setInactiveOnDisable = false;
 
     protected override void HandleEvent(bool b)
     {
@@ -15,6 +15,6 @@ public class SetActiveBoolListener : BoolEventListener
     protected override void OnDisable()
     {
         base.OnDisable();
-        if (setInactiveOnDiable) obj.SetActive(false);
+        if (setInactiveOnDisable) obj.SetActive(false);
     }
 }
