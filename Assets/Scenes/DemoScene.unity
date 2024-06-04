@@ -3365,6 +3365,53 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3797237776640035247, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
+      propertyPath: m_text
+      value: 'Controls:
+
+        Left controller
+
+        ----------------------
+
+        Trigger
+        - change color
+
+        Menu Button - undo last stroke
+
+        Forward -
+        increase brush size
+
+        Backward - decrease brush size
+
+
+        Right
+        controller
+
+        ----------------------
+
+        Trigger - paint
+
+        menu
+        button - toggle UI
+
+        A Button - go to next step
+
+        B Button
+        - go to previous step
+
+        Joystick - Rotate Drawing Object
+
+
+        Movement
+
+        ----------------------
+
+        Left
+        Grip or Right Grip Button - hold down and drag to move
+
+        Left Grip
+        and Right Grip Button - hold down both to rotate'
+      objectReference: {fileID: 0}
     - target: {fileID: 3797237777197498704, guid: 3dd52ef18dca4dc409013611e7b0e131, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.66
