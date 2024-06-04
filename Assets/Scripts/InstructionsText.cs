@@ -125,7 +125,13 @@ private TMP_Text textComponent;
             } else {
                 printText = fullText[currTextInstructionIndex];
             }
-             foreach (char c in printText)
+            // Play the corresponding audio clip
+            if (currTextInstructionIndex < instructionAudioClips.Length)
+            {
+                audioSource.clip = instructionAudioClips[currTextInstructionIndex];
+                audioSource.Play();
+            }
+            foreach (char c in printText)
             {
                 textComponent.text += c;
                 yield return new WaitForSeconds(typingSpeed);
