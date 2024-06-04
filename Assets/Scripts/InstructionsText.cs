@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.XR.Interaction.Toolkit;
 
 [RequireComponent(typeof(TMP_Text))]
 public class InstructionsText : FloatEventListener
@@ -14,17 +15,20 @@ public class InstructionsText : FloatEventListener
     private bool isTyping = false;
     private bool hasError = false;
     private bool activatedError = false;
+    private bool isFirstTime1 = true;
+    private bool isFirstTime4 = true;
+    private bool isFirstTime5 = true;
 
     public int currTextInstructionIndex = 0;
-    public float typingSpeed = 100f;
+    public float typingSpeed = 100.0f;
     public bool playOnAwake;
 
-    public AudioClip[] instructionAudioClips; // Array to hold audio clips
-    private AudioSource audioSource;
+    public TextMeshProUGUI colorText;
+
+    public SurfaceAccuracyChangeEventListener surfaceAccuracyChangeEventListener;
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>(); // Get the AudioSource component
         textComponent = GetComponent<TMP_Text>();
         textComponent.text = "";
         if (playOnAwake) StartCoroutine(TypeText());
@@ -34,7 +38,6 @@ public class InstructionsText : FloatEventListener
 
     void Start() {
         fullText.Add("Welcome to VR Painting. Let's learn to paint a soccer ball. Please press the A button on your right controller to continue to the next step.");
-        fullText.Add("To get started with tracing the soccer ball, please select it by pointing your left controller at the soccer ball on the table and pressing the left grip button");
         fullText.Add("First, change your brush color to white by pressing the trigger on your left controller");
         fullText.Add("Position yourself close to the transparent model of the soccer ball by moving near the pedestal");
         fullText.Add("Adjust the size of your brush using the left joystick so that it is easy to make detailed paint strokes");
@@ -42,15 +45,6 @@ public class InstructionsText : FloatEventListener
         fullText.Add("Now change your brush color to black");
         fullText.Add("Lastly, fill in the black portions of the soccer ball while keeping as high an accuracy as possible");
         fullText.Add("Great work! If you want to try a more difficult model you can try tracing the mushroom by selecting it from the table in front of you");
-
-        fullText.Add("To get started with tracing the mushroom, please make sure it is selected by pointing your left controller at the mushroom on the table and pressing the left grip button");
-        fullText.Add("Change your brush color to yellow by pressing the trigger on your left controller");
-        fullText.Add("Make sure the size of your brush is suiable for making detailed paint strokes");
-        fullText.Add("Fill in the yellow areas of the mushroom stem with your right controller while maintaining as high an accuracy as possible");
-        fullText.Add("Next, change your brush color to black and fill in the black spots on the stem");
-        fullText.Add("Great job! The next step is to step change your brush color to red and fill in the red parts of the mushroom cap, make sure to fill in the underside of the cap as well");
-        fullText.Add("Lastly, change your brush color to white and fill in the white areas on the mushroom cap");
-        fullText.Add("Great work! You have finished the guided VR painting tutorial!");
 
         StartCoroutine(TypeText());
     }
@@ -76,7 +70,7 @@ public class InstructionsText : FloatEventListener
     protected override void HandleEvent(float param)
     {
         base.HandleEvent(param);
-        if (param <= 0.6f)
+        if (param <= 0.6f && inputActions.XRActions.DrawAction.ReadValue<float>() > 0.1f)
         {
             hasError = true;
             activatedError = true;
@@ -94,8 +88,10 @@ public class InstructionsText : FloatEventListener
     {
         textComponent.text = "";
         string printText;
+        // inputActions.XRActions.DrawAction.ReadValue<float>() > 0.1f
         if (hasError)
         {
+            Debug.Log("Painting with error");
             hasError = false;
             textComponent.color = new Color32(200, 0, 0, 255);
             textComponent.text = "You have made a brush stroke that is too far from the model. Please undo your last stroke using the menu button on your left controller and try again. Press next to return to the instructions";
@@ -105,17 +101,17 @@ public class InstructionsText : FloatEventListener
             textComponent.color = new Color32(255, 255, 255, 255);
             Debug.Log(fullText[currTextInstructionIndex]);
             isTyping = true;
-
-            // Play the corresponding audio clip
-            if (currTextInstructionIndex < instructionAudioClips.Length)
-            {
-                audioSource.clip = instructionAudioClips[currTextInstructionIndex];
-                audioSource.Play();
+            string perc = surfaceAccuracyChangeEventListener.GetComponent<SurfaceAccuracyChangeEventListener>().percent;
+            if(currTextInstructionIndex == 1 && colorText.text != "White" && !isFirstTime1) {
+                printText = "You have not changed your brush color to white. Please try again by using the left trigger until the color is white";
+            } else if(currTextInstructionIndex == 4 && perc != "100.00%" && !isFirstTime4) {
+                printText = "Please move your right controller until the it says 100% to ensure you are in the right spot.";
+            } else if(currTextInstructionIndex == 5 && colorText.text != "Black" && !isFirstTime5) {
+                printText = "You have not changed your brush color to black. Please try again by using the left trigger until the color is black";
+            } else {
+                printText = fullText[currTextInstructionIndex];
             }
-
-
-
-            foreach (char c in fullText[currTextInstructionIndex])
+             foreach (char c in printText)
             {
                 textComponent.text += c;
                 yield return new WaitForSeconds(typingSpeed);
@@ -137,6 +133,40 @@ public class InstructionsText : FloatEventListener
     public void NextInstruction()
     {
         Debug.Log("NextInstruction");
+        if(currTextInstructionIndex == 1 && colorText.text != "White" && isFirstTime1 && !isTyping) {
+            isFirstTime1 = false;
+            StartCoroutine(TypeText());
+            new WaitForSeconds(typingSpeed);
+        }
+
+        string perc = surfaceAccuracyChangeEventListener.GetComponent<SurfaceAccuracyChangeEventListener>().percent;
+
+        if(currTextInstructionIndex == 4 && perc != "100.00%" && isFirstTime4 && !isTyping) {
+            isFirstTime4 = false;
+            StartCoroutine(TypeText());
+            new WaitForSeconds(typingSpeed);
+        }
+
+        if(currTextInstructionIndex == 5 && colorText.text != "Black" && isFirstTime5 && !isTyping) {
+            isFirstTime5 = false;
+            StartCoroutine(TypeText());
+            new WaitForSeconds(typingSpeed);
+        }
+
+        if(currTextInstructionIndex == 1 && colorText.text != "White" && !hasError) {
+            new WaitForSeconds(typingSpeed);
+            return;
+        }
+
+        if(currTextInstructionIndex == 4 && perc != "100.00%" && !hasError) {
+            new WaitForSeconds(typingSpeed);
+            return;
+        }
+
+        if(currTextInstructionIndex == 5 && colorText.text != "Black" && !hasError) {
+            new WaitForSeconds(typingSpeed);
+            return;
+        }
 
         if (activatedError)
         {
