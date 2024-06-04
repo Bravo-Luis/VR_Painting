@@ -18,9 +18,9 @@ private TMP_Text textComponent;
     private bool isFirstTime5 = true;
     private bool isFirstTime6 = true;
     private bool isFirstTime10 = true;
+    private bool isFirstTime13 = true;
     private bool isFirstTime14 = true;
     private bool isFirstTime15 = true;
-    private bool isFirstTime16 = true;
 
     public int currTextInstructionIndex = 0;
     public float typingSpeed = 100.0f;
@@ -128,11 +128,11 @@ private TMP_Text textComponent;
                 printText = "You have not changed your brush color to black. Please try again by using the left trigger until the color is black";
             } else if(currTextInstructionIndex == 10 && colorText.text != "Yellow" && !isFirstTime10) {
                 printText = "You have not changed your brush color to yellow. Please try again by using the left trigger until the color is yellow";
-            } else if(currTextInstructionIndex == 14 && colorText.text != "Black" && !isFirstTime14) {
+            } else if(currTextInstructionIndex == 13 && colorText.text != "Black" && !isFirstTime13) {
                 printText = "You have not changed your brush color to black. Please try again by using the left trigger until the color is black";
-            } else if(currTextInstructionIndex == 15 && colorText.text != "Red" && !isFirstTime15) {
+            } else if(currTextInstructionIndex == 14 && colorText.text != "Red" && !isFirstTime14) {
                 printText = "You have not changed your brush color to red. Please try again by using the left trigger until the color is red";
-            } else if(currTextInstructionIndex == 16 && colorText.text != "White" && !isFirstTime16) {
+            } else if(currTextInstructionIndex == 15 && colorText.text != "White" && !isFirstTime15) {
                 printText = "You have not changed your brush color to white. Please try again by using the left trigger until the color is white";
             } else {
                 printText = fullText[currTextInstructionIndex];
@@ -191,20 +191,20 @@ private TMP_Text textComponent;
             new WaitForSeconds(typingSpeed);
         }
 
-        if(currTextInstructionIndex == 14 && colorText.text != "Black" && isFirstTime14 && !isTyping) {
+        if(currTextInstructionIndex == 13 && colorText.text != "Black" && isFirstTime13 && !isTyping) {
+            isFirstTime13 = false;
+            StartCoroutine(TypeText());
+            new WaitForSeconds(typingSpeed);
+        }
+
+        if(currTextInstructionIndex == 14 && colorText.text != "Red" && isFirstTime14 && !isTyping) {
             isFirstTime14 = false;
             StartCoroutine(TypeText());
             new WaitForSeconds(typingSpeed);
         }
 
-        if(currTextInstructionIndex == 15 && colorText.text != "Red" && isFirstTime15 && !isTyping) {
+        if(currTextInstructionIndex == 15 && colorText.text != "White" && isFirstTime15 && !isTyping) {
             isFirstTime15 = false;
-            StartCoroutine(TypeText());
-            new WaitForSeconds(typingSpeed);
-        }
-
-        if(currTextInstructionIndex == 16 && colorText.text != "White" && isFirstTime16 && !isTyping) {
-            isFirstTime16 = false;
             StartCoroutine(TypeText());
             new WaitForSeconds(typingSpeed);
         }
@@ -224,22 +224,22 @@ private TMP_Text textComponent;
             return;
         }
 
-        if(currTextInstructionIndex == 11 && colorText.text != "Yellow" && !hasError) {
+        if(currTextInstructionIndex == 10 && colorText.text != "Yellow" && !hasError) {
             new WaitForSeconds(typingSpeed);
             return;
         }
 
-        if(currTextInstructionIndex == 14 && colorText.text != "Black" && !hasError) {
+        if(currTextInstructionIndex == 13 && colorText.text != "Black" && !hasError) {
             new WaitForSeconds(typingSpeed);
             return;
         }
 
-        if(currTextInstructionIndex == 15 && colorText.text != "Red" && !hasError) {
+        if(currTextInstructionIndex == 14 && colorText.text != "Red" && !hasError) {
             new WaitForSeconds(typingSpeed);
             return;
         }
 
-        if(currTextInstructionIndex == 16 && colorText.text != "White" && !hasError) {
+        if(currTextInstructionIndex == 15 && colorText.text != "White" && !hasError) {
             new WaitForSeconds(typingSpeed);
             return;
         }
