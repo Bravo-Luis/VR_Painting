@@ -107,6 +107,7 @@ private TMP_Text textComponent;
     } 
 
 
+
     IEnumerator TypeText()
     {
         textComponent.text = "";
