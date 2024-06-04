@@ -119,7 +119,7 @@ private TMP_Text textComponent;
             textComponent.color = new Color32(255, 255, 255, 255);
             Debug.Log(fullText[currTextInstructionIndex]);
             isTyping = true;
-            string perc = surfaceAccuracyChangeEventListener.GetComponent<SurfaceAccuracyChangeEventListener>().percent;
+            string perc = surfaceAccuracyChangeEventListener.GetComponent<SurfaceAccuracyChangeEventListener>().GetPercentText();
             if(currTextInstructionIndex == 2 && colorText.text != "White" && !isFirstTime2) {
                 printText = "You have not changed your brush color to white. Please try again by using the left trigger until the color is white";
             } else if(currTextInstructionIndex == 5 && perc != "100.00%" && !isFirstTime5) {
@@ -171,7 +171,7 @@ private TMP_Text textComponent;
             new WaitForSeconds(typingSpeed);
         }
 
-        string perc = surfaceAccuracyChangeEventListener.GetComponent<SurfaceAccuracyChangeEventListener>().percent;
+        string perc = surfaceAccuracyChangeEventListener.GetPercentText();
 
         if(currTextInstructionIndex == 5 && perc != "100.00%" && isFirstTime5 && !isTyping) {
             isFirstTime5 = false;

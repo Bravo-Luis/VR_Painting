@@ -18,24 +18,12 @@ public class SurfaceAccuracyChangeEventListener : FloatEventListener
         param = Mathf.Clamp01(param);   
         float percentage = param * 100;
 
-
-        //// Play sound if percentage is above 80%
-        //if (percentage > 80)
-        //{
-        //    //audioSource.clip = successClip;
-        //    audioSource.Play();
-        //}
-        //else
-        //{
-        //    audioSource.Stop();    
-        //}
-
         StopAllCoroutines();
         m_Text.text = percentage.ToString("F2") + "%";
         StartCoroutine(HideText());
-
-
     }
+
+    public string GetPercentText () { return m_Text.text; }
 
     IEnumerator HideText()
     {
