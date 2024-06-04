@@ -1377,6 +1377,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8251786698425404654, guid: 16685f404bd71064e973b758f8b6303a, type: 3}
   m_PrefabInstance: {fileID: 274186490}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &274186492 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8434825615183521334, guid: 16685f404bd71064e973b758f8b6303a, type: 3}
+  m_PrefabInstance: {fileID: 274186490}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &279174806
 GameObject:
   m_ObjectHideFlags: 0
@@ -2031,7 +2036,7 @@ MonoBehaviour:
   lineRendererPrefab: {fileID: 4339548887346288529, guid: 0f4901cb0f792a54cb837ddf6657b05e, type: 3}
   brushWidth: 0.02
   rightHand: {fileID: 1441870692}
-  rotationCenter: {fileID: 0}
+  rotationCenter: {fileID: 274186492}
   rotationObjectSoccerBall: {fileID: 274186491}
   rotationObjectMushroom: {fileID: 1279607800}
   minBrushWidth: 0.01
