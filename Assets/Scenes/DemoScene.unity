@@ -471,7 +471,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3000,6 +3000,38 @@ PrefabInstance:
       propertyPath: paintAudioSource
       value: 
       objectReference: {fileID: 782938613}
+    - target: {fileID: 2198315112832357660, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+      propertyPath: drawAction.m_Name
+      value: Draw
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198315112832357660, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+      propertyPath: drawAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198315112832357660, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+      propertyPath: drawAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e2232d5a-273a-4d39-842c-c4f7b279a684
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198315112832357660, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+      propertyPath: drawAction.m_SingletonActionBindings.Array.data[1].m_Id
+      value: e2232d5a-273a-4d39-842c-c4f7b279a684
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198315112832357660, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+      propertyPath: drawAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <XRController>{LeftHand}/triggerButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198315112832357660, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+      propertyPath: drawAction.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <XRController>{LeftHand}/triggerButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198315112832357660, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+      propertyPath: drawAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Draw
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198315112832357660, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
+      propertyPath: drawAction.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Draw
+      objectReference: {fileID: 0}
     - target: {fileID: 2397306706934074838, guid: eae7640fb8042fa45a81ae233abbec23, type: 3}
       propertyPath: defaultValue
       value: 1

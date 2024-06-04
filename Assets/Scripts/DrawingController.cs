@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.XR.Interaction.Toolkit;
+
 
 public class DrawingController : MonoBehaviour
 {
@@ -22,6 +22,7 @@ public class DrawingController : MonoBehaviour
     private List<Color> colorPalette = new List<Color> { Color.red, Color.green, Color.blue, Color.yellow, Color.magenta, Color.black , new Color(0.65f, 0.16f, 0.16f), new Color(1f, 0.65f, 0f), Color.white };
     private int currentColorIndex = 0;
     public GameObject[] textElements;
+
 
     void Awake()
     {
