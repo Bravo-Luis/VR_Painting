@@ -4,12 +4,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEngine.XR.Interaction.Toolkit;
 
 [RequireComponent(typeof(TMP_Text))]
 public class InstructionsText : FloatEventListener
 {
-    private TMP_Text textComponent;
+private TMP_Text textComponent;
     private List<string> fullText = new List<string>(10);
     private XRInputActions inputActions;
     private bool isTyping = false;
@@ -27,8 +26,12 @@ public class InstructionsText : FloatEventListener
 
     public SurfaceAccuracyChangeEventListener surfaceAccuracyChangeEventListener;
 
+    public AudioClip[] instructionAudioClips; // Array to hold audio clips
+    private AudioSource audioSource;
+
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>(); // Get the AudioSource component
         textComponent = GetComponent<TMP_Text>();
         textComponent.text = "";
         if (playOnAwake) StartCoroutine(TypeText());
@@ -38,6 +41,7 @@ public class InstructionsText : FloatEventListener
 
     void Start() {
         fullText.Add("Welcome to VR Painting. Let's learn to paint a soccer ball. Please press the A button on your right controller to continue to the next step.");
+        fullText.Add("To get started with tracing the soccer ball, please select it by pointing your left controller at the soccer ball on the table and pressing the left grip button");
         fullText.Add("First, change your brush color to white by pressing the trigger on your left controller");
         fullText.Add("Position yourself close to the transparent model of the soccer ball by moving near the pedestal");
         fullText.Add("Adjust the size of your brush using the left joystick so that it is easy to make detailed paint strokes");
@@ -45,6 +49,15 @@ public class InstructionsText : FloatEventListener
         fullText.Add("Now change your brush color to black");
         fullText.Add("Lastly, fill in the black portions of the soccer ball while keeping as high an accuracy as possible");
         fullText.Add("Great work! If you want to try a more difficult model you can try tracing the mushroom by selecting it from the table in front of you");
+
+        fullText.Add("To get started with tracing the mushroom, please make sure it is selected by pointing your left controller at the mushroom on the table and pressing the left grip button");
+        fullText.Add("Change your brush color to yellow by pressing the trigger on your left controller");
+        fullText.Add("Make sure the size of your brush is suiable for making detailed paint strokes");
+        fullText.Add("Fill in the yellow areas of the mushroom stem with your right controller while maintaining as high an accuracy as possible");
+        fullText.Add("Next, change your brush color to black and fill in the black spots on the stem");
+        fullText.Add("Great job! The next step is to step change your brush color to red and fill in the red parts of the mushroom cap, make sure to fill in the underside of the cap as well");
+        fullText.Add("Lastly, change your brush color to white and fill in the white areas on the mushroom cap");
+        fullText.Add("Great work! You have finished the guided VR painting tutorial!");
 
         StartCoroutine(TypeText());
     }
@@ -84,6 +97,7 @@ public class InstructionsText : FloatEventListener
     }
 
 
+
     IEnumerator TypeText()
     {
         textComponent.text = "";
@@ -102,11 +116,11 @@ public class InstructionsText : FloatEventListener
             Debug.Log(fullText[currTextInstructionIndex]);
             isTyping = true;
             string perc = surfaceAccuracyChangeEventListener.GetComponent<SurfaceAccuracyChangeEventListener>().percent;
-            if(currTextInstructionIndex == 1 && colorText.text != "White" && !isFirstTime1) {
+            if(currTextInstructionIndex == 2 && colorText.text != "White" && !isFirstTime1) {
                 printText = "You have not changed your brush color to white. Please try again by using the left trigger until the color is white";
-            } else if(currTextInstructionIndex == 4 && perc != "100.00%" && !isFirstTime4) {
+            } else if(currTextInstructionIndex == 5 && perc != "100.00%" && !isFirstTime4) {
                 printText = "Please move your right controller until the it says 100% to ensure you are in the right spot.";
-            } else if(currTextInstructionIndex == 5 && colorText.text != "Black" && !isFirstTime5) {
+            } else if(currTextInstructionIndex == 6 && colorText.text != "Black" && !isFirstTime5) {
                 printText = "You have not changed your brush color to black. Please try again by using the left trigger until the color is black";
             } else {
                 printText = fullText[currTextInstructionIndex];
@@ -133,7 +147,7 @@ public class InstructionsText : FloatEventListener
     public void NextInstruction()
     {
         Debug.Log("NextInstruction");
-        if(currTextInstructionIndex == 1 && colorText.text != "White" && isFirstTime1 && !isTyping) {
+        if(currTextInstructionIndex == 2 && colorText.text != "White" && isFirstTime1 && !isTyping) {
             isFirstTime1 = false;
             StartCoroutine(TypeText());
             new WaitForSeconds(typingSpeed);
@@ -141,29 +155,29 @@ public class InstructionsText : FloatEventListener
 
         string perc = surfaceAccuracyChangeEventListener.GetComponent<SurfaceAccuracyChangeEventListener>().percent;
 
-        if(currTextInstructionIndex == 4 && perc != "100.00%" && isFirstTime4 && !isTyping) {
+        if(currTextInstructionIndex == 5 && perc != "100.00%" && isFirstTime4 && !isTyping) {
             isFirstTime4 = false;
             StartCoroutine(TypeText());
             new WaitForSeconds(typingSpeed);
         }
 
-        if(currTextInstructionIndex == 5 && colorText.text != "Black" && isFirstTime5 && !isTyping) {
+        if(currTextInstructionIndex == 6 && colorText.text != "Black" && isFirstTime5 && !isTyping) {
             isFirstTime5 = false;
             StartCoroutine(TypeText());
             new WaitForSeconds(typingSpeed);
         }
 
-        if(currTextInstructionIndex == 1 && colorText.text != "White" && !hasError) {
+        if(currTextInstructionIndex == 2 && colorText.text != "White" && !hasError) {
             new WaitForSeconds(typingSpeed);
             return;
         }
 
-        if(currTextInstructionIndex == 4 && perc != "100.00%" && !hasError) {
+        if(currTextInstructionIndex == 5 && perc != "100.00%" && !hasError) {
             new WaitForSeconds(typingSpeed);
             return;
         }
 
-        if(currTextInstructionIndex == 5 && colorText.text != "Black" && !hasError) {
+        if(currTextInstructionIndex == 6 && colorText.text != "Black" && !hasError) {
             new WaitForSeconds(typingSpeed);
             return;
         }
