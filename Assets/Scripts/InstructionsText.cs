@@ -26,9 +26,7 @@ private TMP_Text textComponent;
     public float typingSpeed = 100.0f;
     public bool playOnAwake;
 
-    public TextMeshProUGUI colorText;
-
-    public SurfaceAccuracyChangeEventListener surfaceAccuracyChangeEventListener;
+    public string perc = string.Empty;
 
     public AudioClip[] instructionAudioClips; // Array to hold audio clips
     private AudioSource audioSource;
@@ -67,6 +65,8 @@ private TMP_Text textComponent;
     }
 
 
+
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -87,6 +87,7 @@ private TMP_Text textComponent;
     protected override void HandleEvent(float param)
     {
         base.HandleEvent(param);
+        perc = (param * 100).ToString("F2") + "%";
         if (param <= 0.6f && inputActions.XRActions.DrawAction.ReadValue<float>() > 0.1f)
         {
             hasError = true;
@@ -100,6 +101,10 @@ private TMP_Text textComponent;
         }
     }
 
+    private string GetColorText()
+    {
+        return GetComponent<LastStringReceivedListener>().received;
+    } 
 
 
     IEnumerator TypeText()
@@ -119,20 +124,20 @@ private TMP_Text textComponent;
             textComponent.color = new Color32(255, 255, 255, 255);
             Debug.Log(fullText[currTextInstructionIndex]);
             isTyping = true;
-            string perc = surfaceAccuracyChangeEventListener.GetComponent<SurfaceAccuracyChangeEventListener>().GetPercentText();
-            if(currTextInstructionIndex == 2 && colorText.text != "White" && !isFirstTime2) {
+
+            if(currTextInstructionIndex == 2 && GetColorText() != "White" && !isFirstTime2) {
                 printText = "You have not changed your brush color to white. Please try again by using the left trigger until the color is white";
             } else if(currTextInstructionIndex == 5 && perc != "100.00%" && !isFirstTime5) {
                 printText = "Please move your right controller until the it says 100% to ensure you are in the right spot.";
-            } else if(currTextInstructionIndex == 6 && colorText.text != "Black" && !isFirstTime6) {
+            } else if(currTextInstructionIndex == 6 && GetColorText() != "Black" && !isFirstTime6) {
                 printText = "You have not changed your brush color to black. Please try again by using the left trigger until the color is black";
-            } else if(currTextInstructionIndex == 10 && colorText.text != "Yellow" && !isFirstTime10) {
+            } else if(currTextInstructionIndex == 10 && GetColorText() != "Yellow" && !isFirstTime10) {
                 printText = "You have not changed your brush color to yellow. Please try again by using the left trigger until the color is yellow";
-            } else if(currTextInstructionIndex == 13 && colorText.text != "Black" && !isFirstTime13) {
+            } else if(currTextInstructionIndex == 13 && GetColorText() != "Black" && !isFirstTime13) {
                 printText = "You have not changed your brush color to black. Please try again by using the left trigger until the color is black";
-            } else if(currTextInstructionIndex == 14 && colorText.text != "Red" && !isFirstTime14) {
+            } else if(currTextInstructionIndex == 14 && GetColorText() != "Red" && !isFirstTime14) {
                 printText = "You have not changed your brush color to red. Please try again by using the left trigger until the color is red";
-            } else if(currTextInstructionIndex == 15 && colorText.text != "White" && !isFirstTime15) {
+            } else if(currTextInstructionIndex == 15 && GetColorText() != "White" && !isFirstTime15) {
                 printText = "You have not changed your brush color to white. Please try again by using the left trigger until the color is white";
             } else {
                 printText = fullText[currTextInstructionIndex];
@@ -165,13 +170,11 @@ private TMP_Text textComponent;
     public void NextInstruction()
     {
         Debug.Log("NextInstruction");
-        if(currTextInstructionIndex == 2 && colorText.text != "White" && isFirstTime2 && !isTyping) {
+        if(currTextInstructionIndex == 2 && GetColorText() != "White" && isFirstTime2 && !isTyping) {
             isFirstTime2 = false;
             StartCoroutine(TypeText());
             new WaitForSeconds(typingSpeed);
         }
-
-        string perc = surfaceAccuracyChangeEventListener.GetPercentText();
 
         if(currTextInstructionIndex == 5 && perc != "100.00%" && isFirstTime5 && !isTyping) {
             isFirstTime5 = false;
@@ -179,37 +182,37 @@ private TMP_Text textComponent;
             new WaitForSeconds(typingSpeed);
         }
 
-        if(currTextInstructionIndex == 6 && colorText.text != "Black" && isFirstTime6 && !isTyping) {
+        if(currTextInstructionIndex == 6 && GetColorText() != "Black" && isFirstTime6 && !isTyping) {
             isFirstTime6 = false;
             StartCoroutine(TypeText());
             new WaitForSeconds(typingSpeed);
         }
 
-        if(currTextInstructionIndex == 10 && colorText.text != "Yellow" && isFirstTime10 && !isTyping) {
+        if(currTextInstructionIndex == 10 && GetColorText() != "Yellow" && isFirstTime10 && !isTyping) {
             isFirstTime10 = false;
             StartCoroutine(TypeText());
             new WaitForSeconds(typingSpeed);
         }
 
-        if(currTextInstructionIndex == 13 && colorText.text != "Black" && isFirstTime13 && !isTyping) {
+        if(currTextInstructionIndex == 13 && GetColorText() != "Black" && isFirstTime13 && !isTyping) {
             isFirstTime13 = false;
             StartCoroutine(TypeText());
             new WaitForSeconds(typingSpeed);
         }
 
-        if(currTextInstructionIndex == 14 && colorText.text != "Red" && isFirstTime14 && !isTyping) {
+        if(currTextInstructionIndex == 14 && GetColorText() != "Red" && isFirstTime14 && !isTyping) {
             isFirstTime14 = false;
             StartCoroutine(TypeText());
             new WaitForSeconds(typingSpeed);
         }
 
-        if(currTextInstructionIndex == 15 && colorText.text != "White" && isFirstTime15 && !isTyping) {
+        if(currTextInstructionIndex == 15 && GetColorText() != "White" && isFirstTime15 && !isTyping) {
             isFirstTime15 = false;
             StartCoroutine(TypeText());
             new WaitForSeconds(typingSpeed);
         }
 
-        if(currTextInstructionIndex == 2 && colorText.text != "White" && !hasError) {
+        if(currTextInstructionIndex == 2 && GetColorText() != "White" && !hasError) {
             new WaitForSeconds(typingSpeed);
             return;
         }
@@ -219,27 +222,27 @@ private TMP_Text textComponent;
             return;
         }
 
-        if(currTextInstructionIndex == 6 && colorText.text != "Black" && !hasError) {
+        if(currTextInstructionIndex == 6 && GetColorText() != "Black" && !hasError) {
             new WaitForSeconds(typingSpeed);
             return;
         }
 
-        if(currTextInstructionIndex == 10 && colorText.text != "Yellow" && !hasError) {
+        if(currTextInstructionIndex == 10 && GetColorText() != "Yellow" && !hasError) {
             new WaitForSeconds(typingSpeed);
             return;
         }
 
-        if(currTextInstructionIndex == 13 && colorText.text != "Black" && !hasError) {
+        if(currTextInstructionIndex == 13 && GetColorText() != "Black" && !hasError) {
             new WaitForSeconds(typingSpeed);
             return;
         }
 
-        if(currTextInstructionIndex == 14 && colorText.text != "Red" && !hasError) {
+        if(currTextInstructionIndex == 14 && GetColorText() != "Red" && !hasError) {
             new WaitForSeconds(typingSpeed);
             return;
         }
 
-        if(currTextInstructionIndex == 15 && colorText.text != "White" && !hasError) {
+        if(currTextInstructionIndex == 15 && GetColorText() != "White" && !hasError) {
             new WaitForSeconds(typingSpeed);
             return;
         }
