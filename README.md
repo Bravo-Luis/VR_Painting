@@ -12,7 +12,8 @@ Right controller\
 Trigger - paint\
 menu button - toggle UI\
 A Button - go to next step\
-B Button - go to previous step
+B Button - go to previous step\
+Joystick - Rotate Drawing Object
 
 Movement\
 ----------------------\
