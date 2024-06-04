@@ -52,10 +52,10 @@ private TMP_Text textComponent;
 
         fullText.Add("To get started with tracing the mushroom, please make sure it is selected by pointing your left controller at the mushroom on the table and pressing the left grip button");
         fullText.Add("Change your brush color to yellow by pressing the trigger on your left controller");
-        fullText.Add("Make sure the size of your brush is suiable for making detailed paint strokes");
+        fullText.Add("Make sure the size of your brush is suitable for making detailed paint strokes");
         fullText.Add("Fill in the yellow areas of the mushroom stem with your right controller while maintaining as high an accuracy as possible");
         fullText.Add("Next, change your brush color to black and fill in the black spots on the stem");
-        fullText.Add("Great job! The next step is to step change your brush color to red and fill in the red parts of the mushroom cap, make sure to fill in the underside of the cap as well");
+        fullText.Add("Great job! The next step is to change your brush color to red and fill in the red parts of the mushroom cap, make sure to fill in the underside of the cap as well");
         fullText.Add("Lastly, change your brush color to white and fill in the white areas on the mushroom cap");
         fullText.Add("Great work! You have finished the guided VR painting tutorial!");
 
