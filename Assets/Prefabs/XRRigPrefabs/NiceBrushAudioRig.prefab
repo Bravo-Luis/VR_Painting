@@ -3352,7 +3352,7 @@ GameObject:
   - component: {fileID: 4492618230263676972}
   - component: {fileID: 8039758483844556571}
   m_Layer: 0
-  m_Name: NiceBrushAudio
+  m_Name: NiceBrushAudioRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
