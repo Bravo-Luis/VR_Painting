@@ -5472,7 +5472,7 @@ MonoBehaviour:
   m_EnableFreeZMovement: 1
   m_UseGravity: 0
   m_GravityApplicationMode: 0
-  m_ControllerTransform: {fileID: 0}
+  m_ControllerTransform: {fileID: 991876179}
   m_EnableMoveWhileSelecting: 0
   m_MoveFactor: 1
   m_GrabMoveAction:
