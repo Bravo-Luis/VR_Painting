@@ -27,6 +27,9 @@ public class DrawingController : MonoBehaviour
     public GameObject[] textElements;
 
 
+    [SerializeField] private BoolEventRaiser brushAudioControl;
+
+
     void Awake()
     {
         inputActions = new XRInputActions();
@@ -61,6 +64,7 @@ public class DrawingController : MonoBehaviour
         else
         {
             currentLineRenderer = null;
+            brushAudioControl.TriggerEvent(false);
         }
 
         UpdateBrushSize();
@@ -89,6 +93,9 @@ public class DrawingController : MonoBehaviour
         currentLineRenderer.endWidth = brushWidth;
         currentLineRenderer.material.color = currentColor;
         points.Clear();
+
+
+        brushAudioControl.TriggerEvent(true);
     }
 
     void UpdateLine()
@@ -177,10 +184,6 @@ public class DrawingController : MonoBehaviour
         return brushWidth;
     }
 
-    public void SetCurrentColor(Color color)
-    {
-        currentColor = color;
-    }
 
     public Color GetCurrentColor()
     {
@@ -213,4 +216,5 @@ public class DrawingController : MonoBehaviour
         }
         Debug.Log("Toggled UI");
     }
+
 }

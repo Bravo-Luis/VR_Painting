@@ -6,6 +6,10 @@ public class ColorOverlay : MonoBehaviour
     public TextMeshProUGUI colorText;
     private DrawingController drawingController;
 
+    [SerializeField] private Vector4EventRaiser colorChangeRaiser;
+    [SerializeField] private StringEventRaiser stringChangeRaiser;
+
+
     void Start()
     {
         drawingController = FindObjectOfType<DrawingController>();
@@ -23,7 +27,8 @@ public class ColorOverlay : MonoBehaviour
             Color currentColor = drawingController.GetCurrentColor();
             colorText.text = $"{ColorToString(currentColor)}";
             colorText.color = currentColor;
-            SendMessage("TriggerEvent", (Vector4)currentColor);
+            colorChangeRaiser.TriggerEvent((Vector4)currentColor);
+            stringChangeRaiser.TriggerEvent(colorText.text);
         }
     }
 
