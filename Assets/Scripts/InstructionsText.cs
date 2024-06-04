@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
-using Unity.VisualScripting;
+
 
 [RequireComponent(typeof(TMP_Text))]
 public class InstructionsText : FloatEventListener
 {
-private TMP_Text textComponent;
+    private TMP_Text textComponent;
     private List<string> fullText = new List<string>(10);
     private XRInputActions inputActions;
     private bool isTyping = false;

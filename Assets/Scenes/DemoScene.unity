@@ -2031,6 +2031,9 @@ MonoBehaviour:
   lineRendererPrefab: {fileID: 4339548887346288529, guid: 0f4901cb0f792a54cb837ddf6657b05e, type: 3}
   brushWidth: 0.02
   rightHand: {fileID: 1441870692}
+  rotationCenter: {fileID: 0}
+  rotationObjectSoccerBall: {fileID: 274186491}
+  rotationObjectMushroom: {fileID: 1279607800}
   minBrushWidth: 0.01
   maxBrushWidth: 0.1
   textElements: []
